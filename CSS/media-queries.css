@@ -1,0 +1,56 @@
+@media screen and (max-width: 768px) {
+    .menu_desktop {
+        display: none;
+    }
+
+    .menu_burguer {
+        display: block;
+        transition: .3s;
+        margin-right: 9%;
+    }
+
+    .menu_burguer:hover {
+        rotate: 90deg;
+    }
+
+    .menu_mobile {
+        width: 70%;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+    }
+
+    .menu_mobile ul {
+        position: absolute;
+        top: 120px;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        text-align: center;
+        list-style-type: none;
+    }
+
+    .menu_mobile li {
+        padding: 20px;
+        transition: .3s;
+        text-align: left;
+        padding-left: 20%;
+        cursor: pointer;
+    }
+
+    .menu_mobile li:hover {
+        background-image: linear-gradient(to right, rgb(255, 170, 0), rgb(255, 119, 0));
+    }
+
+    .menu_mobile a {
+        text-decoration: none;
+        color: rgb(0, 0, 0);
+        font-weight: 600;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .centralizar-logo {
+        width: 30%;
+    }
+    
+}

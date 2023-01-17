@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma de simulação de investimentos completa para você aprender praticando.">
+    <meta name="keywords" content="investimentos,financas,investir">
+    <title>BestInvest</title>
+
+    <!-- CSS do Site -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/media-queries.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../images/favicon-logo.png" type="image/x-icon">
+
+    <!-- JS -->
+    <script src="../js/jquery-3.6.2.min.js" defer></script>
+    <script src="../js/system.js" defer></script>
+    <script src="../js/criptomoedas.js" defer></script>
+    <script src="../js/cotacao-moedas.js" defer></script>
+    <script src="../js/investir.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar_principal">
+            <div class="centralizar_logo">
+                <img class="logo_do_site" src="../images/img-logo-site.png" alt="Logo do site">
+            </div>
+            <div class="menu_desktop">
+                <ul>
+                    <li><a href="../index.html">Home</a><hr></li>
+                    <li><a href="investir.html">Investir</a><hr></li>
+                    <li><a href="#">Criptomoedas</a><hr></li>
+                    <li><a href="#">Conta</a><hr></li>
+                </ul>
+            </div><!--menu_desktop-->
+            <div class="menu_mobile">
+                <ul>
+                    <a href="../index.html"><li><span>Home</span></li></a>
+                    <a href="investir.html"><li><span>Investir</span></li></a>
+                    <a href="#"><li><span>Criptomoedas</span></li></a>
+                    <a href="#"><li><span>Conta</span></li></a>
+                </ul>
+                <div class="menu_burguer">
+                    <img src="../images/icone-menu.png" alt="Icone Menu">
+                </div>
+            </div><!--menu_mobile-->
+        </nav>
+    </header><!--header-->
+    <main class="container_carteira">
+        <div class="carteira">
+            <div class="opcao_carteira">
+                <p class="adicionar_dinheiro_btn">Adicionar</p>
+                <p class="retirar_dinheiro_btn">Retirar</p>
+            </div><!--opcao_carteira-->
+            <div class="input_carteira">
+                <div class="label_dinheiro" id="label_add_dinheiro">
+                    <input type="number" id="add_dinheiro" placeholder="Adicionar">
+                    <button type="submit" class="btn_input" id="btn_add_investimento">Confirmar</button>
+                </div>
+                <div class="label_dinheiro" id="label_retirar_dinheiro">
+                    <input type="number" id="retirar_dinheiro" placeholder="Retirar">
+                    <button type="submit" class="btn_input" id="btn_retirar_investimento">Confirmar</button>
+                </div>
+            </div><!--input_carteira-->
+            <div class="dinheiro_carteira">
+                <p class="dinheiro_investido_usuario">
+                    <!-- Dinheiro Investido -->
+                </p>
+            </div><!--dinheiro_carteira-->
+        </div><!--carteira-->
+    </main><!--container_carteira-->
+    <div class="container_investir_opcao">
+        <div class="box_opcao_investir" id="clickTesouroDireto">
+            <h1>Tesouro Direto</h1>
+        </div>
+        <div class="box_opcao_investir" id="clickRendaFixa">
+            <h1>Renda Fixa</h1>
+        </div>
+        <div class="box_opcao_investir" id="clickAcoes">
+            <h1>Ações</h1>
+        </div>
+    </div><!--container_investir_opcao-->
+    <main class="container_main_investir">
+
+        <div class="centralizar_content">
+            <!-- Opções de investimento -->
+        </div><!--centralizar_content-->
+
+    </main><!--container_main_investir-->
+    <footer>
+        <div class="bloco_footer">
+            <p class="info_site_footer">
+                Todos os direitos reservados
+                &copy;  BestInvest - 2023 - By <a target="_blank" href="https://www.instagram.com/bitcode.cursos/">BitCode</a>
+            </p><!--info_site_footer-->
+        </div><!--bloco_footer-->
+    </footer><!--footer-->
+    <div class="popup"></div>
+    <div class="fundo_popup_select">
+        <div class="container_select_investimento">
+            <div class="fechar_select_inv">
+                
+                <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
+
+            </div><!--fechar_select_inv-->
+            <h1 id="nome_investimento">
+                <!-- Nome do investimento -->
+            </h1>
+            <h2>
+                Quanto você quer investir?
+            </h2>
+            <div class="valor_investir">
+                <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
+            </div><!--valor_investir-->
+            <div class="lista_dados_inv">
+                <ul>
+                    <li class="valor_minimo_inv">valor min</li>
+                    <li class="grau_risco_inv">risco</li>
+                    <li class="liquidez_inv">liquidez</li>
+                    <li class="rentabilidade_inv">rentabilidade</li>
+                    <li class="imposto_inv">imposto</li>
+                </ul>
+                <ul>
+                    <li class="valor_minimo_inv" id="valor_minimo">0</li>
+                    <li class="grau_risco_inv" id="grau_risco">0</li>
+                    <li class="liquidez_inv" id="liquidez">0</li>
+                    <li class="rentabilidade_inv" id="rentabilidade_inv">0</li>
+                    <li class="imposto_inv" id="imposto_inv">0</li>
+                </ul>
+            </div><!--lista_dados_inv-->
+            <div class="container_button_confirmar">
+                <button type="submit" id="button_confirmar_inv">Confirmar</button>
+            </div><!--container_button_confirmar-->
+        </div><!--container_select_investimento-->
+    </div><!--fundo_popup_select-->
+</body>
+</html>

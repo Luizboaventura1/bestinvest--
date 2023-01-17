@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plataforma de simulação de investimentos completa para você aprender praticando.">
+    <meta name="keywords" content="investimentos,financas,investir">
+    <title>BestInvest</title>
+
+    <!-- CSS do Site -->
+    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="CSS/media-queries.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/favicon-logo.png" type="image/x-icon">
+
+    <!-- JS -->
+    <script src="./js/jquery-3.6.2.min.js" defer></script>
+    <script src="./js/system.js" defer></script>
+    <script src="./js/criptomoedas.js" defer></script>
+    <script src="js/cotacao-moedas.js" defer></script>
+    <script src="js/investir.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar_principal">
+            <div class="centralizar_logo">
+                <img class="logo_do_site" src="images/img-logo-site.png" alt="Logo do site">
+            </div>
+            <div class="menu_desktop">
+                <ul>
+                    <li><a href="index.html">Home</a><hr></li>
+                    <li><a href="investir/investir.html">Investir</a><hr></li>
+                    <li><a href="#">Criptomoedas</a><hr></li>
+                    <li><a href="#">Conta</a><hr></li>
+                </ul>
+            </div><!--menu_desktop-->
+            <div class="menu_mobile">
+                <ul>
+                    <a href="index.html"><li><span>Home</span></li></a>
+                    <a href="investir/investir.html"><li><span>Investir</span></li></a>
+                    <a href="#"><li><span>Criptomoedas</span></li></a>
+                    <a href="#"><li><span>Conta</span></li></a>
+                </ul>
+                <div class="menu_burguer">
+                    <img src="images/icone-menu.png" alt="Icone Menu">
+                </div>
+            </div><!--menu_mobile-->
+        </nav><!--navbar_principal-->
+    </header><!--header-->
+    <div class="div_saldo_usuario">
+        <h1 class="titulo_saldo">
+            Saldo Atual
+        </h1>
+        <div class="saldo_atual">
+            <!-- Saldo Atual -->
+        </div>
+    </div><!--div_saldo_usuario-->
+    <main class="container_carteira">
+        <div class="carteira">
+            <div class="opcao_carteira">
+                <p class="adicionar_dinheiro_btn">Adicionar</p>
+                <p class="retirar_dinheiro_btn">Retirar</p>
+            </div><!--opcao_carteira-->
+            <div class="input_carteira">
+                <div class="label_dinheiro" id="label_add_dinheiro">
+                    <input type="number" id="add_dinheiro" placeholder="Adicionar">
+                    <button type="submit" class="btn_input" id="btn_add_investimento">Confirmar</button>
+                </div>
+                <div class="label_dinheiro" id="label_retirar_dinheiro">
+                    <input type="number" id="retirar_dinheiro" placeholder="Retirar">
+                    <button type="submit" class="btn_input" id="btn_retirar_investimento">Confirmar</button>
+                </div>
+            </div><!--input_carteira-->
+            <div class="dinheiro_carteira">
+                <p class="dinheiro_investido_usuario">
+                    <!-- Dinheiro Investido -->
+                </p>
+            </div><!--dinheiro_carteira-->
+        </div><!--carteira-->
+    </main><!--container_carteira-->
+    <div class="section_cripto">
+        <!-- Cotações -->
+    </div>
+    <footer>
+        <div class="bloco_footer">
+            <p class="info_site_footer">
+                Todos os direitos reservados
+                &copy;  BestInvest - 2023 - By <a target="_blank" href="https://www.instagram.com/bitcode.cursos/">BitCode</a>
+            </p><!--info_site_footer-->
+        </div><!--bloco_footer-->
+    </footer><!--footer-->
+    <div class="popup"></div>
+</body>
+</html>

@@ -1,0 +1,785 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+
+/*------------*/
+
+:root {
+    --cor1: #1e1f29;
+    --cor2: #45b8ed;
+    --cor3: #f3f3f3;
+    --cor4: #6092ac;
+    --riscoAlto: red;
+    --riscoMedio:rgb(248, 227, 0);
+    --riscoBaixo: rgb(0, 161, 0);
+    --riscoMuitoBaixo: var(--cor2);
+}
+
+body {
+    background-image: linear-gradient(to right, rgb(235, 235, 236), rgb(208, 208, 220));
+}
+
+
+/* Nav do site */
+
+
+.logo_do_site {
+    width: 100%;
+    max-width: 250px;
+}
+
+.navbar_principal {
+    width: 100%;
+    background-color: #16171e;
+    display: flex;
+    height: 120px;
+}
+
+.centralizar_logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    padding-left: 5%;
+}
+
+.menu_burguer {
+    display: none;
+    width: 35px;
+    height: 30px;
+}
+
+.menu_burguer img {
+    width: 100%;
+}
+
+.menu_desktop {
+    width: 70%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 5%;
+}
+
+.menu_desktop ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.menu_desktop li {
+    padding: 20px;
+}
+
+.menu_desktop a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+.menu_desktop hr {
+    width: 0%;
+    height: 3px;
+    background-color: rgb(255, 136, 0);
+    border: none;
+    transition: .4s;
+    margin-top: 4px;
+}
+
+.menu_desktop li:hover hr {
+    width: 98%;
+}
+
+.menu_mobile {
+    display: none;
+}
+
+.menu_mobile ul{
+    display: none;
+}
+
+
+/* carteira do usuário */
+
+
+.container_carteira {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.carteira {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    background-color: var(--cor1);
+    border-radius: 10px;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.436);
+    margin: 35px 0;
+}
+
+.adicionar_dinheiro_btn {
+    margin: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    background-color: orange;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: .3s;
+    cursor:pointer;
+}
+
+.retirar_dinheiro_btn {
+    margin: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    background-color: orange;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    transition: .3s;
+    cursor:pointer;
+}
+
+.adicionar_dinheiro_btn:hover {
+    background-color: rgb(219, 147, 13);
+}
+
+.retirar_dinheiro_btn:hover {
+    background-color: rgb(199, 129, 0);
+}
+
+
+.opcao_carteira {
+/*Div Botoes adicionar e Retirar*/
+    display: flex;
+}
+
+.dinheiro_carteira {
+    max-width: 290px;
+    height: 140px;
+    border-radius: 10px;
+    background-image: linear-gradient(to right ,#2e2f3e, #3f4155);
+    margin: auto;
+    margin-top: 30px;
+    box-shadow: 0px 0px 10px #00000063;
+}
+
+.dinheiro_investido_usuario {
+    display: flex;
+    padding: 53px;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-size: 28px;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+
+/* Saldo Atual */
+
+
+.div_saldo_usuario {
+    width: 100%;
+    height: 220px;
+    background-color: #1e1f29;
+}
+
+.saldo_atual {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 31px;
+    font-weight: bold;
+    color: white;
+    padding: 30px 0px 0px 60px; 
+}
+
+.titulo_saldo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(255, 174, 0);
+    padding: 50px 0px 0px 60px; 
+}
+
+
+/* Input Carteira */
+
+
+.label_dinheiro {
+    padding: 10px 10px 0 10px;
+}
+
+#label_add_dinheiro {
+    display: none;
+}
+
+#label_retirar_dinheiro {
+    display: none;
+}
+
+.label_dinheiro > input {
+    border: 2px solid rgb(0, 0, 0);
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    max-width: 120px;
+    border-radius: 5px;
+    background-color: #2e2f3e;
+    color: white;
+    font-size: 18px;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin-right: 10px;
+}
+
+.label_dinheiro > input[type=number]::-webkit-inner-spin-button  {
+    -webkit-appearance: none;
+}
+
+.btn_input {
+    border: none;
+    background-color: #45b8ed;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px 25px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn_input:hover {
+    background-color: #348cb4;
+}
+
+
+/* Mensagens na tela */
+
+
+.container_popup {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 100%;
+    max-width: 220px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: white;
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container_popup h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(38, 197, 38);
+    padding-top: 21px;
+}
+
+.container_popup_erro {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 100%;
+    max-width: 220px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: rgb(255, 247, 247);
+    overflow: hidden;
+}
+
+.container_popup_erro h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    color: rgb(135, 18, 18);
+    padding-top: 21px;
+}
+
+.bloco_popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.barra_popup {
+    background-color: rgb(255, 0, 0);
+    width: 0%;
+    height: 5px;
+    margin-top: 13px;
+}
+
+
+/* Scroll Bar */
+
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: #242424;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgb(59, 59, 59);
+    border: 2px solid #242424;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(110, 110, 110);
+}
+
+
+/* Criptomoedas */
+
+
+.section_cripto {
+    text-align: center;
+    background-color: black;
+    padding: 25px 0;
+}
+
+.container_cripto_single {
+    display:inline-table;
+    margin: 15px;
+    width: 100%;
+    max-width: 350px;
+    height: 120px;
+    cursor: pointer;
+}
+
+.container_cripto_single:hover .logo_cripto img {
+    rotate: 360deg;
+}
+
+.bloco_wraper_cripto {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    height: 120px;
+    background-color: #2e2f3e;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.bloco_wraper_cripto:hover {
+    background-color: #1d1d2a;
+}
+
+.logo_cripto {
+    width: 30%;
+    padding: 3px;
+}
+
+.logo_cripto img {
+    width: 90%;
+    transition: .5s;
+}
+
+.bloco_cripto {
+    width: 70%;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.nome_cripto_moeda {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    font-size: 19px;
+    padding-bottom: 10px;
+}
+
+.cotacao_cripto {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    display: inline-block;
+    padding: 5px 0;
+}
+
+.atualizar_cotacao {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(203, 217, 255);
+    font-size: 15px;
+    padding: 6px 0px 6px 0px;
+}
+
+
+/* Opcao de investimento */
+
+
+.container_investir_opcao {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.box_opcao_investir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 150px;
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 8px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.box_opcao_investir:hover {
+    background-color: #ff9900;
+}
+
+.box_opcao_investir h1 {
+    font-family: 'Montserrat',sans-serif;
+    color: rgb(37, 37, 37);
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.container_main_investir {
+    width: 100%;
+    background-color: #ccc;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centralizar_content {
+    width: 100%;
+    max-width: 650px;
+    height: 100%;
+    padding: 12px;
+}
+
+.div_investir_box {
+    width: 100%;
+    height: 110px;
+    border-radius: 10px;
+    margin: 10px 0px;
+    background-color: white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.157);
+    display: flex;
+    cursor: pointer;
+}
+
+.grau_risco {
+    height: 110px;
+    width: 7px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.risco_baixo {
+    background-color: var(--riscoBaixo);
+}
+
+.risco_muitobaixo {
+    background-color: var(--riscoMuitoBaixo);
+}
+
+.risco_medio {
+    background-color: var(--riscoMedio);
+}
+
+.risco_alto {
+    background-color: var(--riscoAlto);
+}
+
+.bloco_info_investir {
+    width: 100%;
+    display: inline-block;
+    padding-left: 10px;
+}
+
+.box_info_investir1 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.box_info_investir1 h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 19px;
+}
+
+.box_info_investir2 {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.inv_minimo {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rentabilidade_box {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bloco_span_wraper {
+    display: inline-block;
+}
+
+.bloco_span_wraper span {
+    display: block;
+    text-align: center;
+    padding: 2px;
+}
+
+.span_info_investir {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 13px;
+    color: rgb(148, 148, 148);
+}
+
+.info_valor {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+
+#rentabilidade_grau {
+    color: rgb(38, 197, 38);
+}
+
+.barra_hr {
+    height: 1px;
+    background-color: #7e7e7e;
+    width: 98%;
+    padding: 0 20px;
+    margin: 1px 0;
+}
+
+
+/* Popup do investimento escolhido */
+
+
+.fundo_popup_select {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.264);
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: none;
+}
+
+.container_select_investimento {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 500px;
+    width: 100%;
+    height: 600px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.249);
+}
+
+.container_select_investimento > h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+.container_select_investimento > h2 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(86, 86, 86);
+    padding: 35px 0 5px 0;
+    font-size: 20px;
+}
+
+.valor_investir {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0px;
+}
+
+.valor_investir > input {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(79, 79, 79);
+    font-size: 25px;
+    font-family: 'Montserrat',sans-serif;
+    color: black;
+    padding: 10px;
+    width: 120px;
+    text-align: center;
+}
+
+.valor_investir input::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+.valor_investir input { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+
+.valor_investir > p {
+    font-size: 25px;
+    font-family: 'Montserrat',sans-serif;
+    color: black;
+}
+
+.fechar_select_inv {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 50px;
+    padding: 12px;
+}
+
+.fechar_select_inv img {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.fechar_select_inv img:hover {
+    transform: rotate(180deg);
+}
+
+.lista_dados_inv {
+    width: 100%;
+    display: flex;
+}
+
+.lista_dados_inv ul {
+    list-style-type: none;
+    padding-left: 30px;
+    width: 100%;
+}
+
+.lista_dados_inv ul li {
+    padding: 10px 0 10px 10px;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 19px;
+    border-bottom: 1px solid #ccc;
+}
+
+.lista_dados_inv ul:nth-of-type(2) {
+    text-align: right;
+    padding-right: 10%;
+    padding-left: 0;
+}
+
+.lista_dados_inv ul:nth-of-type(2) li {
+    padding: 10px 10px 10px 0;
+}
+
+.container_button_confirmar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#button_confirmar_inv {
+    font-family: 'Montserrat',sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    padding: 16px 50px;
+    border-radius: 4px;
+    background-color: rgb(255, 128, 0);
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#button_confirmar_inv:hover {
+    background-color: rgb(235, 124, 12);
+}
+
+
+/* Footer do site */
+
+
+footer {
+    width: 100%;
+    background-color: rgb(8, 9, 12);
+    justify-content: bottom;
+    align-items: center;
+}
+
+.bloco_footer {
+    padding: 60px 0;
+}
+
+
+.info_site_footer {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(115, 115, 115);
+    line-height: 25px;
+}
+
+.info_site_footer a {
+    color: rgb(115, 115, 115);
+    transition: .4s;
+}
+
+.info_site_footer a:hover {
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-image: linear-gradient(to right,rgb(255, 106, 0),rgb(255, 0, 0));
+}
