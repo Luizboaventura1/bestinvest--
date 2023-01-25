@@ -698,8 +698,9 @@ body {
 
 .lista_dados_inv ul {
     list-style-type: none;
-    padding-left: 30px;
+    padding-left: 7%;
     width: 100%;
+
 }
 
 .lista_dados_inv ul li {
@@ -711,7 +712,7 @@ body {
 
 .lista_dados_inv ul:nth-of-type(2) {
     text-align: right;
-    padding-right: 10%;
+    padding-right: 7%;
     padding-left: 0;
 }
 
@@ -734,7 +735,7 @@ body {
     font-size: 19px;
     font-weight: bold;
     text-transform: uppercase;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 16px 50px;
     border-radius: 4px;
     background-color: rgb(255, 128, 0);

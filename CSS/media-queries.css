@@ -54,3 +54,16 @@
     }
     
 }
+
+@media screen and (max-width: 480px) {
+    .lista_dados_inv ul {
+        padding-left: 4%;
+        width: 40%;
+    
+    }
+
+    .lista_dados_inv ul:nth-of-type(2) {
+        padding-right: 4%;
+        width: 60%;
+    }
+}

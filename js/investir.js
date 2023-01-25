@@ -208,7 +208,7 @@ function resetarValorInvestimento () {
 // Tabela de investimentos
 
 function tabelaInv () {
-    $('body').append(`
+    let tabela = $(`
     <div class="fundo_popup_select">
     <div class="container_select_investimento">
         <div class="fechar_select_inv">
@@ -244,16 +244,37 @@ function tabelaInv () {
         <div class="container_button_confirmar">
             <button type="submit" id="button_confirmar_inv">Confirmar</button>
         </div><!--container_button_confirmar-->
-    </div><!--container_select_investimento-->
- </div><!--fundo_popup_select-->`)
+        </div><!--container_select_investimento-->
+    </div><!--fundo_popup_select-->`)
+    tabela.hide()
+    $('body').append(tabela)
+    tabela.fadeIn()
 }
 
 // Desabilitar Botao
 
 function disableButton() {
-    $('#button_confirmar_inv').css('background-color','rgb(139, 73, 8)')
+    $('#button_confirmar_inv').css('background-color','rgb(224, 224, 224)')
+    $('#button_confirmar_inv').css('color','rgb(138, 138, 138)')
+    
+
+    if(!$('#button_confirmar_inv').disabled){
+
+        // Desabilita o botao
+        $('#button_confirmar_inv').prop('disabled', true);
+    }
+
+
     setTimeout(function(){
         $('#button_confirmar_inv').css('background-color','rgb(255, 128, 0)')
+        $('#button_confirmar_inv').css('color','white')
+        setTimeout(function(){
+            if(!$('#button_confirmar_inv').disabled){
+        
+                // Desabilita o botao
+                $('#button_confirmar_inv').prop('disabled', false);
+            }
+        },200)
     },3200)
 }
 
@@ -267,18 +288,8 @@ function selectTesouroDireto(id) {
     tabelaInv()
 
     // Fechar popup tabela
-    $('.fechar_select_inv > img').click(function(){
-        $('.container_select_investimento').remove()
-        $('.fundo_popup_select').remove()
-    })
-
-    $('.fundo_popup_select').click(function(){
-        $('.fundo_popup_select').remove()
-    })
-
-    $('.container_select_investimento').click(function(e){
-        e.stopPropagation()
-    })
+    buttonFlecharPopup()
+    verificarFecharPopup()
 
     //  Informacoes
     $('.valor_minimo_inv').css('display','block')
@@ -298,9 +309,11 @@ function selectTesouroDireto(id) {
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
             popUpTransacaoErro()
+            disableButton()
         }
         else if(parseFloat(valorInput) >= tesouroDireto[id].investimentoMinimo) {
             popUpTransacao()
+            disableButton()
         }
         else if(valorInput == 0){
             popUpTransacaoErro()
@@ -352,12 +365,15 @@ function selectRendaFixa(id) {
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < rendaFixa[id].investimentoMinimo){
             popUpTransacaoErro()
+            disableButton()
         }
         else if(parseFloat(valorInput) >= rendaFixa[id].investimentoMinimo) {
             popUpTransacao()
+            disableButton()
         }
         else if(valorInput == 0){
             popUpTransacaoErro()
+            disableButton()
 
         }
 

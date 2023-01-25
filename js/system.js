@@ -133,14 +133,21 @@ $('.retirar_dinheiro_btn').click(function(){
 
 function buttonFlecharPopup () {
     $('.fechar_select_inv > img').click(function(){
-        $('.container_select_investimento').remove()
-        $('.fundo_popup_select').remove()
+        $('.container_select_investimento').fadeOut(300)
+        $('.fundo_popup_select').fadeOut(300)
+        setTimeout(function(){
+            $('.container_select_investimento').remove()
+            $('.fundo_popup_select').remove()
+        },400)
     })
 }
 
 function verificarFecharPopup() {
     $('.fundo_popup_select').click(function(){
-        $('.fundo_popup_select').remove()
+        $('.fundo_popup_select').fadeOut(300)
+        setTimeout(function(){
+            $('.fundo_popup_select').remove()
+        },400)
     })
 
     $('.container_select_investimento').click(function(e){
@@ -152,12 +159,39 @@ function verificarFecharPopup() {
 buttonFlecharPopup()
 verificarFecharPopup()
 
+
+function disableButtonTransacao(btn) {
+    $(btn).css('background-color','rgb(224, 224, 224)')
+    $(btn).css('color','rgb(138, 138, 138)')
+    
+
+    if(!$(btn).disabled){
+
+        // Desabilita o botao
+        $(btn).prop('disabled', true);
+    }
+
+
+    setTimeout(function(){
+        $(btn).css('background-color',' #45b8ed')
+        $(btn).css('color','white')
+        setTimeout(function(){
+            if(!$(btn).disabled){
+        
+                // Desabilita o botao
+                $(btn).prop('disabled', false);
+            }
+        },200)
+    },3200)
+}
+
 // Botões de ação
 
 $('#btn_add_investimento').click(function(){
     let inputAdd = $('#add_dinheiro').val()
     if(parseFloat(inputAdd) > saldoConta){
         popUpTransacaoErro()
+        disableButtonTransacao($('.btn_input'))
     }else if(parseFloat(inputAdd) <= saldoConta) {
         saldoConta -= parseFloat(inputAdd)
         dinheiroInvestidoTotal = parseFloat(dinheiroInvestidoTotal) + parseFloat(inputAdd)
@@ -166,10 +200,11 @@ $('#btn_add_investimento').click(function(){
         atualizarSaldo()
         atualizarSaldoInvestimento()
 
-        $(this).hide()
-        setTimeout(function(){
-            $(this).slideIn('#btn_add_investimento')
-        },2200)
+        disableButtonTransacao($('.btn_input'))
+    }
+    else if(inputAdd <= 0 || inputAdd != (/[0-9]/)) {
+        popUpTransacaoErro()
+        disableButtonTransacao($('.btn_input'))
     }
 })
 
@@ -177,6 +212,7 @@ $('#btn_retirar_investimento').click(function(){
     let inputRetirar = $('#retirar_dinheiro').val()
     if(parseFloat(inputRetirar) > dinheiroInvestidoTotal){
         popUpTransacaoErro()
+        disableButtonTransacao($('.btn_input'))
     }else if(parseFloat(inputRetirar) <= dinheiroInvestidoTotal){
         saldoConta = parseFloat(saldoConta) + parseFloat(inputRetirar)
         dinheiroInvestidoTotal -= parseFloat(inputRetirar)
@@ -184,11 +220,12 @@ $('#btn_retirar_investimento').click(function(){
         popUpTransacao()
         atualizarSaldo()
         atualizarSaldoInvestimento()
-
-        $(this).hide()
-        setTimeout(function(){
-            $(this).slideIn('#btn_retirar_investimento')
-        },2200)
+  
+        disableButtonTransacao($('.btn_input'))
+    }
+    else if(inputAdd <= 0 || inputAdd != (/[0-9]/)) {
+        popUpTransacaoErro()
+        disableButtonTransacao($('.btn_input'))
     }
 })
 
@@ -197,4 +234,12 @@ $('.menu_burguer').click(function(){
     menu.slideToggle()
 })
 
-// Botões de ação
+
+
+
+// Extrato da conta
+
+
+function extratoConta () {
+
+}
