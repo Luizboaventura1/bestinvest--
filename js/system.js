@@ -130,20 +130,21 @@ $(function(){
 
     function buttonFlecharPopup () {
         $('.fechar_select_inv > img').click(function(){
-            $('.container_select_investimento').fadeOut()
-            $('.fundo_popup_select').fadeOut()
+            $('.container_select_investimento').remove()
+            $('.fundo_popup_select').remove()
         })
     }
 
     function verificarFecharPopup() {
         $('.fundo_popup_select').click(function(){
-            $('.fundo_popup_select').fadeOut()
+            $('.fundo_popup_select').remove()
         })
     
         $('.container_select_investimento').click(function(e){
             e.stopPropagation()
         })
     }
+
 
     buttonFlecharPopup()
     verificarFecharPopup()

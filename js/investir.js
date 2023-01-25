@@ -136,6 +136,9 @@ acoes.map((value)=> {
 </div><!--div_investir_box-->`)
 })
 
+
+//  Botao 
+
 function clickOpcaoInvestimento(){
     $('#clickTesouroDireto').css('background-color','#ff9900')
     $('.display_renda_fixa').hide()
@@ -181,6 +184,8 @@ function clickOpcaoInvestimento(){
 
 clickOpcaoInvestimento()
 
+// Zerar as informacoes
+
 function displayUnico() {
     $('.valor_minimo_inv').css('display','none')
     $('.grau_risco_inv').css('display','none')
@@ -200,13 +205,71 @@ function resetarValorInvestimento () {
     $('#imposto_inv').text('')
 }
 
-let valoM = 0
+// Tabela de investimentos
+function tabelaInv () {
+    $('body').append(`
+    <div class="fundo_popup_select">
+    <div class="container_select_investimento">
+        <div class="fechar_select_inv">
+            
+            <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
+ 
+        </div><!--fechar_select_inv-->
+        <h1 id="nome_investimento">
+            <!-- Nome do investimento -->
+        </h1>
+        <h2>
+            Quanto você quer investir?
+        </h2>
+        <div class="valor_investir">
+            <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
+        </div><!--valor_investir-->
+        <div class="lista_dados_inv">
+            <ul>
+                <li class="valor_minimo_inv">valor min</li>
+                <li class="grau_risco_inv">risco</li>
+                <li class="liquidez_inv">liquidez</li>
+                <li class="rentabilidade_inv">rentabilidade</li>
+                <li class="imposto_inv">imposto</li>
+            </ul>
+            <ul>
+                <li class="valor_minimo_inv" id="valor_minimo">0</li>
+                <li class="grau_risco_inv" id="grau_risco">0</li>
+                <li class="liquidez_inv" id="liquidez">0</li>
+                <li class="rentabilidade_inv" id="rentabilidade_inv">0</li>
+                <li class="imposto_inv" id="imposto_inv">0</li>
+            </ul>
+        </div><!--lista_dados_inv-->
+        <div class="container_button_confirmar">
+            <button type="submit" id="button_confirmar_inv">Confirmar</button>
+        </div><!--container_button_confirmar-->
+    </div><!--container_select_investimento-->
+ </div><!--fundo_popup_select-->`)
+}
+
+// Tipos de investimentos
+
 function selectTesouroDireto(id) {
     resetarValorInvestimento()
-    $('.fundo_popup_select').fadeIn()
-    $('.container_select_investimento').fadeIn()
 
+    // Aparecer tabela
+    tabelaInv()
 
+    // Fechar popup tabela
+    $('.fechar_select_inv > img').click(function(){
+        $('.container_select_investimento').remove()
+        $('.fundo_popup_select').remove()
+    })
+
+    $('.fundo_popup_select').click(function(){
+        $('.fundo_popup_select').remove()
+    })
+
+    $('.container_select_investimento').click(function(e){
+        e.stopPropagation()
+    })
+
+    //  Informacoes
     $('.valor_minimo_inv').css('display','block')
     $('.grau_risco_inv').css('display','block')
     $('.rentabilidade_inv').css('display','block')
@@ -224,18 +287,16 @@ function selectTesouroDireto(id) {
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
             alert('Valor baixo')
-            console.log(valoM)
         }else {
             alert('Valor aceito')
-            console.log(valoM += 20)
         }
     })
 }
 
 function selectRendaFixa(id) {
     resetarValorInvestimento()
-    $('.fundo_popup_select').fadeIn()
-    $('.container_select_investimento').fadeIn()
+
+
     $('#valor_minimo').text(`R$ ${rendaFixa[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
 
     $('.valor_minimo_inv').css('display','block')
