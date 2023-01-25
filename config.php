@@ -1,11 +1,11 @@
 <?php
 
-    $dbhost = 'LocalHost';
+    $dbHost = 'https://luizboaventura1.github.io/bestinvest--/';
     $dbUsername = 'root';
     $dbPassword = 'servermy%1077';
-    $dbname = 'login';
+    $dbName = 'formulario-login';
 
-    $conexao = new mysqli($dbhost, $dbUsername, $dbPassword, $dbname);
+    $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
     if($conexao -> connect_errno){
         echo 'Erro';
