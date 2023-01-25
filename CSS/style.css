@@ -360,7 +360,7 @@ body {
 }
 
 .container_cripto_single {
-    display:inline-table;
+    display: inline-table;
     margin: 15px;
     width: 100%;
     max-width: 350px;

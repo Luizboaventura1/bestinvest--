@@ -200,8 +200,8 @@ function resetarValorInvestimento () {
     $('#imposto_inv').text('')
 }
 
+let valoM = 0
 function selectTesouroDireto(id) {
-    $('.valor-user-investir').val('')
     resetarValorInvestimento()
     $('.fundo_popup_select').fadeIn()
     $('.container_select_investimento').fadeIn()
@@ -224,8 +224,10 @@ function selectTesouroDireto(id) {
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
             alert('Valor baixo')
+            console.log(valoM)
         }else {
             alert('Valor aceito')
+            console.log(valoM += 20)
         }
     })
 }

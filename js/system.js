@@ -196,12 +196,4 @@ $(function(){
     // Botões de ação
 
 
-    //Slider
-
-    $('.section_cripto').slick({
-        centerMode: true,
-        slidesToShow: 3,
-        autoPlay: true
-    })
-
 })
