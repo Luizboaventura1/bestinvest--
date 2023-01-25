@@ -206,6 +206,7 @@ function resetarValorInvestimento () {
 }
 
 // Tabela de investimentos
+
 function tabelaInv () {
     $('body').append(`
     <div class="fundo_popup_select">
@@ -247,7 +248,17 @@ function tabelaInv () {
  </div><!--fundo_popup_select-->`)
 }
 
+// Desabilitar Botao
+
+function disableButton() {
+    $('#button_confirmar_inv').css('background-color','rgb(139, 73, 8)')
+    setTimeout(function(){
+        $('#button_confirmar_inv').css('background-color','rgb(255, 128, 0)')
+    },3200)
+}
+
 // Tipos de investimentos
+
 
 function selectTesouroDireto(id) {
     resetarValorInvestimento()
@@ -286,15 +297,38 @@ function selectTesouroDireto(id) {
     $('#button_confirmar_inv').click(function(){
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
-            alert('Valor baixo')
-        }else {
-            alert('Valor aceito')
+            popUpTransacaoErro()
+        }
+        else if(parseFloat(valorInput) >= tesouroDireto[id].investimentoMinimo) {
+            popUpTransacao()
+        }
+        else if(valorInput == 0){
+            popUpTransacaoErro()
+            disableButton()
         }
     })
 }
 
+
 function selectRendaFixa(id) {
     resetarValorInvestimento()
+
+        // Aparecer tabela
+        tabelaInv()
+
+        // Fechar popup tabela
+        $('.fechar_select_inv > img').click(function(){
+            $('.container_select_investimento').remove()
+            $('.fundo_popup_select').remove()
+        })
+    
+        $('.fundo_popup_select').click(function(){
+            $('.fundo_popup_select').remove()
+        })
+    
+        $('.container_select_investimento').click(function(e){
+            e.stopPropagation()
+        })
 
 
     $('#valor_minimo').text(`R$ ${rendaFixa[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
@@ -312,11 +346,54 @@ function selectRendaFixa(id) {
     $('#rentabilidade_inv').text(`${rendaFixa[id].rentabilidade}% do cdi`)
     $('#imposto_inv').text(`${rendaFixa[id].impostodeRenda}`)
     $('#liquidez').text(`${rendaFixa[id].liquidez}`)
+
+
+    $('#button_confirmar_inv').click(function(){
+        let valorInput = $('.valor-user-investir').val()
+        if(parseFloat(valorInput) < rendaFixa[id].investimentoMinimo){
+            popUpTransacaoErro()
+        }
+        else if(parseFloat(valorInput) >= rendaFixa[id].investimentoMinimo) {
+            popUpTransacao()
+        }
+        else if(valorInput == 0){
+            popUpTransacaoErro()
+
+        }
+
+    })
 }
+
 
 function selectAcoes(id) {
     resetarValorInvestimento()
-    $('.fundo_popup_select').fadeIn()
-    $('.container_select_investimento').fadeIn()
+
+        // Aparecer tabela
+        tabelaInv()
+
+        // Fechar popup tabela
+        $('.fechar_select_inv > img').click(function(){
+            $('.container_select_investimento').remove()
+            $('.fundo_popup_select').remove()
+        })
+    
+        $('.fundo_popup_select').click(function(){
+            $('.fundo_popup_select').remove()
+        })
+    
+        $('.container_select_investimento').click(function(e){
+            e.stopPropagation()
+        })
+
+
+
+    $('#button_confirmar_inv').click(function(){
+        let valorInput = $('.valor-user-investir').val()
+        if(parseFloat(valorInput) < acoes[id].investimentoMinimo){
+            alert('Valor baixo')
+        }else {
+            alert('Valor aceito')
+        }
+    })
 }
 
