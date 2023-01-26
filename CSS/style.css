@@ -105,6 +105,14 @@ body {
     display: none;
 }
 
+#menu_open {
+    display: block;
+}
+
+#menu_close {
+    display: none;
+}
+
 
 /* carteira do usuário */
 

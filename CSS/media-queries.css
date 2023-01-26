@@ -8,11 +8,7 @@
         transition: .3s;
         margin-right: 9%;
     }
-
-    .menu_burguer:hover {
-        rotate: 90deg;
-    }
-
+    
     .menu_mobile {
         width: 70%;
         display: flex;
