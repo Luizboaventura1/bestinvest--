@@ -26,6 +26,13 @@ body {
     background-image: linear-gradient(to right, rgb(235, 235, 236), rgb(208, 208, 220));
 }
 
+.embreve {
+    text-align: center;
+    padding-top: 150px;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
 
 /* Nav do site */
 
@@ -33,6 +40,7 @@ body {
 .logo_do_site {
     width: 100%;
     max-width: 250px;
+    min-width: 150px;
 }
 
 .navbar_principal {
@@ -244,7 +252,7 @@ body {
 }
 
 .extrato_user {
-    position: absolute;
+    position: fixed;
     left: 50%;
     bottom: 0;
     transform: translate(-50%);
