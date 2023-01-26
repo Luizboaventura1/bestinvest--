@@ -239,6 +239,64 @@ $('.menu_burguer').click(function(){
 
 // Extrato da conta
 
+function tabelaExtrato() {
+    let tabelaExtrato = $(`
+    <div class="fundo_popup_select">
+    <div class="extrato_user">
+        <div class="fechar_select_inv" id="close_pop">
+            
+            <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
+
+        </div><!--fechar_select_inv-->
+        <h1>Extrato</h1>
+        <div class="container_extrato_user">
+            <div class="valor_extrato_box">
+                <span id="nome_transacao">Pix recebido</span>
+                <span id="valor_transferencia">R$ 200,00</span>
+                <span id="data_transacao">06/03/23, às 20H30</span>
+            </div>
+        </div>
+    </div>
+    </div>`)
+
+    tabelaExtrato.hide()
+    $('body').append(tabelaExtrato)
+    tabelaExtrato.fadeIn()
+}
+
+
+function closeBtnExtrato () {
+    $('#close_pop > img').click(function(){
+
+        $('.extrato_user').fadeOut(400)
+
+        setTimeout(function(){
+            $('.extrato_user').remove()
+        },500)
+
+        $('.fundo_popup_select').fadeOut(300)
+        setTimeout(function(){
+            $('.fundo_popup_select').remove()
+        },300)
+    })
+}
+
+$('#button_extrato').click(function(){
+    tabelaExtrato()
+    closeBtnExtrato ()
+
+   $('.fundo_popup_select').click(function(){
+        $('.fundo_popup_select').fadeOut(300)
+        setTimeout(function(){
+            $('.fundo_popup_select').remove()
+        },300)
+    })
+
+    $('.extrato_user').click(function(e){
+        e.stopPropagation()
+    })
+})
+
 
 function extratoConta () {
 
