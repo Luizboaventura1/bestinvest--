@@ -143,20 +143,6 @@ body {
     margin: 35px 0;
 }
 
-.adicionar_dinheiro_btn {
-    margin: 12px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bolder;
-    background-color: orange;
-    outline: none;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    transition: .3s;
-    cursor:pointer;
-}
-
 .retirar_dinheiro_btn {
     margin: 12px;
     font-family: 'Montserrat', sans-serif;
@@ -165,14 +151,10 @@ body {
     outline: none;
     border: none;
     color: white;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     transition: .3s;
     cursor:pointer;
-}
-
-.adicionar_dinheiro_btn:hover {
-    background-color: rgb(219, 147, 13);
 }
 
 .retirar_dinheiro_btn:hover {
@@ -183,6 +165,23 @@ body {
 .opcao_carteira {
 /*Div Botoes adicionar e Retirar*/
     display: flex;
+}
+
+
+.opcao_carteira a {
+    padding: 10px 20px;
+    margin: 12px;
+    font-family: 'Monserrat',sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #ffb300;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.opcao_carteira a:hover {
+    background-color: #7e28ff;
 }
 
 .dinheiro_carteira {

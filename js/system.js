@@ -106,21 +106,9 @@ function popUpTransacaoErro(){
 }
 
 
-$('.adicionar_dinheiro_btn').click(function(){
-    // Adicionar
-    $('#label_add_dinheiro').css('display', 'block')
-
-    // Esconde opcao retirar
-    $('#label_retirar_dinheiro').css('display','none')
-})
-
-
 $('.retirar_dinheiro_btn').click(function(){
     // Retirar
-    $('#label_retirar_dinheiro').css('display', 'block')
-
-    // Escondo opcao adicionar
-    $('#label_add_dinheiro').css('display','none')
+    $('#label_retirar_dinheiro').slideToggle(400)
 
 })
 
@@ -200,31 +188,6 @@ function verificarInput() {
 
 // Botões de movimentar dinheiro
 
-$('#btn_add_investimento').click(function(){
-    let inputAdd = $('#add_dinheiro').val()
-
-    if(parseFloat(inputAdd) > saldoConta){
-
-        popUpTransacaoErro()
-        disableButtonTransacao($('.btn_input'))
-
-    }else if(parseFloat(inputAdd) <= saldoConta && Math.sign(inputAdd) != -1) {
-
-        saldoConta -= parseFloat(inputAdd)
-        dinheiroInvestidoTotal = parseFloat(dinheiroInvestidoTotal) + parseFloat(inputAdd)
-
-        popUpTransacao()
-        atualizarSaldo()
-        atualizarSaldoInvestimento()
-
-        disableButtonTransacao($('.btn_input'))
-    }
-    else if(inputAdd <= 0 || inputAdd != (/[0-9]/)) {
-        popUpTransacaoErro()
-        disableButtonTransacao($('.btn_input'))
-    }
-})
-
 $('#btn_retirar_investimento').click(function(){
     let inputRetirar = $('#retirar_dinheiro').val()
     console.log(inputRetirar)
@@ -244,6 +207,13 @@ $('#btn_retirar_investimento').click(function(){
         atualizarSaldoInvestimento()
   
         disableButtonTransacao($('.btn_input'))
+
+        $('#label_retirar_dinheiro').slideToggle(400)
+
+        // Criar extrato
+        let nomeTransferencia = 'Crédito Resgate Fundo'
+        let valorTransferencia = `R$ ${parseFloat(inputRetirar).toFixed(2).replace('.',',')}`
+        extratoConta(nomeTransferencia,valorTransferencia)
     }
     else if(inputRetirar <= 0) {
         popUpTransacaoErro()
@@ -285,11 +255,7 @@ function tabelaExtrato() {
         </div><!--fechar_select_inv-->
         <h1>Extrato</h1>
         <div class="container_extrato_user">
-            <div class="valor_extrato_box">
-                <span id="nome_transacao">Pix recebido</span>
-                <span id="valor_transferencia">R$ 200,00</span>
-                <span id="data_transacao">06/03/23, às 20H30</span>
-            </div>
+
         </div>
     </div>
     </div>`)
@@ -318,7 +284,7 @@ function closeBtnExtrato () {
 
 $('#button_extrato').click(function(){
     tabelaExtrato()
-    closeBtnExtrato ()
+    closeBtnExtrato()
 
    $('.fundo_popup_select').click(function(){
         $('.fundo_popup_select').fadeOut(300)
@@ -333,6 +299,48 @@ $('#button_extrato').click(function(){
 })
 
 
-function extratoConta () {
+
+let listaExtrato = localStorage.getItem('listaExtrato') ? JSON.parse(localStorage.getItem('listaExtrato')) : []
+
+
+function extratoConta (tipoTransferencia,valor) {
+    let data = new Date()
+    let dia = data.getDate()
+    let mes = data.getMonth()
+    let ano = data.getFullYear()
+    let horas = data.getHours()
+    let minutos = data.getMinutes()
+
+    let dataTransferencia = `${dia}/${mes+1}/${ano}, às ${horas}h${minutos}`
+    console.log(dataTransferencia)
+
+    let extratoUser = {
+        tranferencia: tipoTransferencia,
+        valorTransferencia: valor,
+        horarioTransferencia: dataTransferencia
+    }
+
+    listaExtrato.push(extratoUser)
+
+    localStorage.setItem('listaExtrato',JSON.stringify(listaExtrato))
 
 }
+
+
+function mostrarExtratos () {
+
+    
+    for(let i = 0;i <= lis )
+
+
+    listaExtrato.map((value)=>{
+        $('container_extrato_user').append(`
+        <div class="valor_extrato_box">
+            <span id="nome_transacao">${value}</span>
+            <span id="valor_transferencia">R$ 200,00</span>
+            <span id="data_transacao">06/03/23, às 20H30</span>
+        </div>`)
+    })
+}
+
+mostrarExtratos()
