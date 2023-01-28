@@ -137,18 +137,21 @@ acoes.map((value)=> {
 })
 
 
-//  Botao 
+
+//  Botao de cada lista de investimento
 
 function clickOpcaoInvestimento(){
+    // Estilizar os botoes
     $('#clickTesouroDireto').css('background-color','#ff9900')
     $('.display_renda_fixa').hide()
     $('.display_acoes').hide()
 
+    // Lista de cada investimento
     let btnRendaFixa = $('.display_renda_fixa')
     let btnTesouroDireto = $('.display_tesouro_direto')
     let btnAcoes = $('.display_acoes')
 
-
+    // Mostra a lista do tesouro direto
     $('#clickTesouroDireto').click(function(){{
         btnRendaFixa.hide()
         btnAcoes.hide()
@@ -159,7 +162,7 @@ function clickOpcaoInvestimento(){
         $('#clickRendaFixa').css('background-color','white')
     }})
 
-
+    // Mostra a lista da renda fixa
     $('#clickRendaFixa').click(function(){
         btnAcoes.hide()
         btnTesouroDireto.hide()
@@ -170,7 +173,7 @@ function clickOpcaoInvestimento(){
         $('#clickRendaFixa').css('background-color','#ff9900')
     })
 
-
+    // Mostra a lista de acoes
     $('#clickAcoes').click(function(){
         btnTesouroDireto.hide()
         btnRendaFixa.hide()
@@ -246,6 +249,7 @@ function tabelaInv () {
         </div><!--container_button_confirmar-->
         </div><!--container_select_investimento-->
     </div><!--fundo_popup_select-->`)
+    
     tabela.hide()
     $('body').append(tabela)
     tabela.fadeIn()
@@ -268,10 +272,10 @@ function disableButton() {
     setTimeout(function(){
         $('#button_confirmar_inv').css('background-color','rgb(255, 128, 0)')
         $('#button_confirmar_inv').css('color','white')
+
         setTimeout(function(){
             if(!$('#button_confirmar_inv').disabled){
-        
-                // Desabilita o botao
+                // Habilitar o botao
                 $('#button_confirmar_inv').prop('disabled', false);
             }
         },200)

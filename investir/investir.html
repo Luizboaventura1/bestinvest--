@@ -62,11 +62,11 @@
             </div><!--opcao_carteira-->
             <div class="input_carteira">
                 <div class="label_dinheiro" id="label_add_dinheiro">
-                    <input type="number" id="add_dinheiro" placeholder="Adicionar">
+                    <input type="number" oninput="verificarInput()"  id="add_dinheiro" placeholder="Adicionar">
                     <button type="submit" class="btn_input" id="btn_add_investimento">Confirmar</button>
                 </div>
                 <div class="label_dinheiro" id="label_retirar_dinheiro">
-                    <input type="number" id="retirar_dinheiro" placeholder="Retirar">
+                    <input type="number" oninput="verificarInput()"  id="retirar_dinheiro" placeholder="Retirar">
                     <button type="submit" class="btn_input" id="btn_retirar_investimento">Confirmar</button>
                 </div>
             </div><!--input_carteira-->
