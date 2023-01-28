@@ -8,7 +8,7 @@ $(function(){
             horarioCotacao: `<span id="horarioUSD"></span>`
         },
         {
-            imagem: 'bitcoin-logo.webp',
+            imagem: 'bitcoin-btc-logo.svg',
             nome: 'BitCoin',
             cotacao: `<span id="moedaBTCBRL"></span>`,
             horarioCotacao: `<span id="horarioBTC"></span>`

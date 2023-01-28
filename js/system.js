@@ -7,7 +7,7 @@ let saldoConta = localStorage.getItem('saldoConta')
 
 
 
-// Funções do site
+// Mostrar saldo da conta
 
 function totalSaldo(){
     if(localStorage.getItem('saldoConta') == null){
@@ -19,6 +19,8 @@ function totalSaldo(){
     }
 }
 
+
+// Mostrar saldo dos investimentos
 
 function totalInvestido(){
     if(localStorage.getItem('dinheiroInvestido') == null){
@@ -45,7 +47,9 @@ function atualizarSaldoInvestimento(){
     $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(dinheiroInvestidoTotal).toFixed(2).replace('.',',')}`)
 }
 
+
 function popUpTransacao() {
+    // Ja comeca resetando o popup
     $('.container_popup').remove()
 
     setTimeout(function(){
@@ -74,6 +78,7 @@ function popUpTransacao() {
 }
 
 function popUpTransacaoErro(){
+    // Ja comeca resetando o popup
     $('.container_popup_erro').remove()
 
 
@@ -100,17 +105,6 @@ function popUpTransacaoErro(){
     },3500)
 }
 
-function inputLimit () {
-    $('#add_dinheiro').keypress(function(){
-        $(this).val(this.match(/^[0-9]$/))
-    })
-
-    $('#retirar_dinheiro').keypress(function(){
-        $(this).val(this.match(/^[0-9]$/))
-    })
-}
-
-inputLimit()
 
 $('.adicionar_dinheiro_btn').click(function(){
     // Adicionar
@@ -180,7 +174,7 @@ function disableButtonTransacao(btn) {
         setTimeout(function(){
             if(!$(btn).disabled){
         
-                // Desabilita o botao
+                // Habilita o botao
                 $(btn).prop('disabled', false);
             }
         },200)
@@ -194,14 +188,15 @@ function verificarInput() {
     let inputAdd = $('#add_dinheiro').val()
     let inputRetirar = $('#retirar_dinheiro').val()
 
-    if(Math.sign(parseFloat(inputAdd)) == -1) {
-        $('#add_dinheiro').val('')
+    if(Math.sign(parseFloat(inputAdd)) == -1 ||
+        Math.sign(parseFloat(inputRetirar)) == -1) {
+
+            $('#add_dinheiro').val('')
+            $('#retirar_dinheiro').val('')
     }
 
-    if(Math.sign(parseFloat(inputRetirar)) == -1){
-        $('#retirar_dinheiro').val('')
-    }
 }
+
 
 // Botões de movimentar dinheiro
 

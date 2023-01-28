@@ -218,7 +218,7 @@ body {
 
 .saldo_atual {
     font-family: 'Montserrat', sans-serif;
-    font-size: 31px;
+    font-size: 30px;
     font-weight: bold;
     color: white;
     padding: 30px 0px 0px 60px; 
@@ -226,7 +226,7 @@ body {
 
 .titulo_saldo {
     font-family: 'Montserrat', sans-serif;
-    font-size: 22px;
+    font-size: 19px;
     font-weight: bold;
     color: rgb(255, 174, 0);
     padding: 50px 0px 0px 60px; 
@@ -458,8 +458,8 @@ body {
 
 .section_cripto {
     text-align: center;
-    background-color: black;
     padding: 25px 0;
+    background-color: rgb(8, 9, 12);
 }
 
 .container_cripto_single {
@@ -496,9 +496,10 @@ body {
 }
 
 .logo_cripto img {
-    width: 90%;
+    width: 85%;
     transition: .5s;
 }
+
 
 .bloco_cripto {
     width: 70%;
