@@ -189,6 +189,7 @@ function disableButtonTransacao(btn) {
 
 
 // Verifica se tem numeros negativos no input
+
 function verificarInput() {
     let inputAdd = $('#add_dinheiro').val()
     let inputRetirar = $('#retirar_dinheiro').val()
