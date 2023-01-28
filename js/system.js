@@ -250,7 +250,7 @@ function tabelaExtrato() {
     <div class="extrato_user">
         <div class="fechar_select_inv" id="close_pop">
             
-            <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
+            <img src="./images/icone-closepopup.png" alt="Icone fechar Popup">
 
         </div><!--fechar_select_inv-->
         <h1>Extrato</h1>
