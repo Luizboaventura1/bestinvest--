@@ -263,6 +263,7 @@ function tabelaExtrato() {
     tabelaExtrato.hide()
     $('body').append(tabelaExtrato)
     tabelaExtrato.fadeIn()
+    
 }
 
 
@@ -285,6 +286,7 @@ function closeBtnExtrato () {
 $('#button_extrato').click(function(){
     tabelaExtrato()
     closeBtnExtrato()
+    
 
    $('.fundo_popup_select').click(function(){
         $('.fundo_popup_select').fadeOut(300)
@@ -296,11 +298,13 @@ $('#button_extrato').click(function(){
     $('.extrato_user').click(function(e){
         e.stopPropagation()
     })
+
+    mostrarExtratos()
 })
 
 
 
-let listaExtrato = localStorage.getItem('listaExtrato') ? JSON.parse(localStorage.getItem('listaExtrato')) : []
+let listaExtrato = JSON.parse(localStorage.getItem('listaExtrato')) ? JSON.parse(localStorage.getItem('listaExtrato')) : []
 
 
 function extratoConta (tipoTransferencia,valor) {
@@ -315,7 +319,7 @@ function extratoConta (tipoTransferencia,valor) {
     console.log(dataTransferencia)
 
     let extratoUser = {
-        tranferencia: tipoTransferencia,
+        transferencia: tipoTransferencia,
         valorTransferencia: valor,
         horarioTransferencia: dataTransferencia
     }
@@ -330,17 +334,14 @@ function extratoConta (tipoTransferencia,valor) {
 function mostrarExtratos () {
 
     
-    for(let i = 0;i <= lis )
-
-
-    listaExtrato.map((value)=>{
-        $('container_extrato_user').append(`
-        <div class="valor_extrato_box">
-            <span id="nome_transacao">${value}</span>
-            <span id="valor_transferencia">R$ 200,00</span>
-            <span id="data_transacao">06/03/23, às 20H30</span>
-        </div>`)
-    })
+    for(let i = 0;i <= listaExtrato.length;i++ ){
+        listaExtrato.reverse()
+        $('.container_extrato_user').append(`
+            <div class="valor_extrato_box">
+                <span class="nome_transacao">${listaExtrato[i].transferencia}</span>
+                <span class="valor_transferencia">${listaExtrato[i].valorTransferencia}</span>
+                <span class="data_transacao">${listaExtrato[i].horarioTransferencia}</span>
+            </div>
+        `)   
+    }
 }
-
-mostrarExtratos()

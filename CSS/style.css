@@ -296,7 +296,7 @@ body {
 }
 
 
-#data_transacao {
+.data_transacao {
     position: absolute;
     font-family: 'Montserrat',sans-serif;
     font-size: 13px;
@@ -305,14 +305,14 @@ body {
     color: rgb(25, 25, 25);
 }
 
-#nome_transacao {
+.nome_transacao {
     font-family: 'Montserrat',sans-serif;
     font-weight: bold;
     padding-left: 30px;
     width: 100%;
 }
 
-#valor_transferencia {
+.valor_transferencia {
     width: 100%;
     font-family: 'Montserrat',sans-serif;
     font-weight: bold;
