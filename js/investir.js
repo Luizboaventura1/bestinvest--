@@ -9,17 +9,23 @@ const tesouroDireto = [
         rentabilidade: 12.33,
         grauRiscoNome: 'Baixo',
         grauRisco: 'risco_baixo',
-        imposto: 'isento após 30 dias',
         id: 0
     },
     {
-        nome:'TESOURO PREFIXADO',
-        investimentoMinimo: 34.89,
-        rentabilidade: 12.44,
+        nome:'TESOURO IPCA+',
+        investimentoMinimo: 55.30,
+        rentabilidade: 6.17,
         grauRiscoNome: 'Médio',
         grauRisco: 'risco_medio',
-        imposto: 'isento após 30 dias',
         id: 1
+    },
+    {
+        nome:'TESOURO SELIC',
+        investimentoMinimo: 127.25,
+        rentabilidade:  0.0994,
+        grauRiscoNome: 'Médio',
+        grauRisco: 'risco_medio',
+        id: 2
     }
 ]
 
@@ -166,7 +172,7 @@ function clickOpcaoInvestimento(){
     $('#clickRendaFixa').click(function(){
         btnAcoes.hide()
         btnTesouroDireto.hide()
-        btnRendaFixa.show()
+        btnRendaFixa.hide()//Em construcao
 
         $('#clickTesouroDireto').css('background-color','white')
         $('#clickAcoes').css('background-color','white')
@@ -177,7 +183,7 @@ function clickOpcaoInvestimento(){
     $('#clickAcoes').click(function(){
         btnTesouroDireto.hide()
         btnRendaFixa.hide()
-        btnAcoes.show()
+        btnAcoes.hide()//Em construcao
 
         $('#clickTesouroDireto').css('background-color','white')
         $('#clickAcoes').css('background-color','#ff9900')
@@ -282,8 +288,9 @@ function disableButton() {
     },3200)
 }
 
-// Tipos de investimentos
 
+
+// Tipos de investimentos
 
 function selectTesouroDireto(id) {
     resetarValorInvestimento()
@@ -299,27 +306,51 @@ function selectTesouroDireto(id) {
     $('.valor_minimo_inv').css('display','block')
     $('.grau_risco_inv').css('display','block')
     $('.rentabilidade_inv').css('display','block')
-    $('.imposto_inv').css('display','block')
+    $('.liquidez_inv').css('display','none')
+    $('.imposto_inv').css('display','none')
+
 
 
     $('#nome_investimento').text(`${tesouroDireto[id].nome}`)
     $('#valor_minimo').text(`R$ ${tesouroDireto[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
     $('#grau_risco').text(`${tesouroDireto[id].grauRiscoNome}`)
     $('#rentabilidade_inv').text(`${tesouroDireto[id].rentabilidade}%`)
-    $('#imposto_inv').text(`${tesouroDireto[id].imposto}`)
 
 
+    // Dados da conta e de investimentos
+    let aplicacaoTesouroDireto = parseFloat(localStorage.getItem('tesouroDireto'))
+    let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
+    
+    
+
+    //Confirmar investimento
     $('#button_confirmar_inv').click(function(){
+        //Input para investir
         let valorInput = $('.valor-user-investir').val()
+
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
             popUpTransacaoErro()
             disableButton()
         }
-        else if(parseFloat(valorInput) >= tesouroDireto[id].investimentoMinimo) {
+        else if(
+            parseFloat(valorInput) >= tesouroDireto[id].investimentoMinimo 
+            && parseFloat(valorInput) <= parseFloat(saldoConta)) {
             popUpTransacao()
             disableButton()
+
+            aplicacaoTesouroDireto = parseFloat(aplicacaoTesouroDireto) + parseFloat(valorInput)
+            saldoConta = parseFloat(saldoConta) - parseFloat(valorInput)
+
+            extratoConta('Aplicacao fundos',valorInput)
+            atualizarSaldo(saldoConta)
+            atualizarTesouroDireto(aplicacaoTesouroDireto)
+
         }
         else if(valorInput == 0){
+            popUpTransacaoErro()
+            disableButton()
+        }
+        else if(parseFloat(valorInput) > parseFloat(saldoConta)) {
             popUpTransacaoErro()
             disableButton()
         }

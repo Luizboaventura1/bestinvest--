@@ -1,3 +1,7 @@
+
+// Cotacoes de criptomoedas e outras moedas
+
+
 let url = 'https://economia.awesomeapi.com.br/last/'
 
 let moedas = 'USD-BRL,EUR-BRL,BTC-BRL,ETH-BRL'

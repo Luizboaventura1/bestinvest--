@@ -332,7 +332,7 @@ body {
 }
 
 .valor_transferencia {
-    width: 100%;
+    width: 30%;
     font-family: 'Montserrat',sans-serif;
     font-weight: bold;
     color: rgb(0, 205, 0);
@@ -905,4 +905,99 @@ footer {
     background-clip: text;
     -webkit-background-clip: text;
     background-image: linear-gradient(to right,rgb(255, 106, 0),rgb(255, 0, 0));
+}
+
+
+/* Container Investimentos Total */
+
+
+.container_investimentos_total {
+    width: 100%;
+    padding: 20px 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wraper_tabela {
+    max-height: 400px;
+    width: 100%;
+    max-width: 800px;
+    overflow-y: auto;
+}
+
+/* Tabela Single */
+
+.fundo_investido_usuario {
+    width: 100%;
+    padding: 15px 0;
+    background-color: white;
+}
+
+.investido_aplicacao {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    padding: 20px 0;
+}
+
+.investido_aplicacao > span {
+    font-family: 'Monserrat',sans-serif;
+    font-weight: bold;
+}
+
+.info_investimento_user {
+    display: none;
+}
+
+.button_wraper {
+    display: flex;
+}
+
+.button_aplicar {
+    margin: 0 10px;
+    border: none;
+    font-family: 'Monserrat',sans-serif;
+    font-weight: bold;
+    background-color: orange;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.button_aplicar:hover {
+    background-color: rgb(219, 142, 0);
+}
+
+.button_resgatar {
+    border: 2px solid orange;
+    margin: 0 10px;
+    font-family: 'Monserrat',sans-serif;
+    font-weight: bold;
+    color: orange;
+    padding: 10px 23px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.button_resgatar:hover {
+    background-color: orange;
+    color: white;
+}
+
+.arrow_display {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    rotate: 0deg;
+}
+
+.arrow_display img {
+    width: 100%;
+    transition: .6s;
 }

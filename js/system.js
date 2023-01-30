@@ -37,9 +37,9 @@ totalSaldo()
 totalInvestido()
 
 
-function atualizarSaldo(){
-    localStorage.setItem('saldoConta',parseFloat(saldoConta))
-    $('.saldo_atual').text(`R$ ${parseFloat(saldoConta).toFixed(2).replace('.',',')}`)
+function atualizarSaldo(value){
+    localStorage.setItem('saldoConta',parseFloat(value))
+    $('.saldo_atual').text(`R$ ${parseFloat(value).toFixed(2).replace('.',',')}`)
 }
 
 function atualizarSaldoInvestimento(){
@@ -203,16 +203,17 @@ $('#btn_retirar_investimento').click(function(){
         dinheiroInvestidoTotal -= parseFloat(inputRetirar)
         
         popUpTransacao()
-        atualizarSaldo()
+        atualizarSaldo(saldoConta)
         atualizarSaldoInvestimento()
-  
         disableButtonTransacao($('.btn_input'))
 
+        // animacao
         $('#label_retirar_dinheiro').slideToggle(400)
+
 
         // Criar extrato
         let nomeTransferencia = 'Crédito Resgate Fundo'
-        let valorTransferencia = `R$ ${parseFloat(inputRetirar).toFixed(2).replace('.',',')}`
+        let valorTransferencia = parseFloat(inputRetirar)
         extratoConta(nomeTransferencia,valorTransferencia)
     }
     else if(inputRetirar <= 0) {
@@ -239,109 +240,3 @@ $('.menu_burguer').click(function(){
     menu.slideToggle()
 })
 
-
-
-
-// Extrato da conta
-
-function tabelaExtrato() {
-    let tabelaExtrato = $(`
-    <div class="fundo_popup_select">
-    <div class="extrato_user">
-        <div class="fechar_select_inv" id="close_pop">
-            
-            <img src="./images/icone-closepopup.png" alt="Icone fechar Popup">
-
-        </div><!--fechar_select_inv-->
-        <h1>Extrato</h1>
-        <div class="container_extrato_user">
-
-        </div>
-    </div>
-    </div>`)
-
-    tabelaExtrato.hide()
-    $('body').append(tabelaExtrato)
-    tabelaExtrato.fadeIn()
-    
-}
-
-
-function closeBtnExtrato () {
-    $('#close_pop > img').click(function(){
-
-        $('.extrato_user').fadeOut(400)
-
-        setTimeout(function(){
-            $('.extrato_user').remove()
-        },500)
-
-        $('.fundo_popup_select').fadeOut(300)
-        setTimeout(function(){
-            $('.fundo_popup_select').remove()
-        },300)
-    })
-}
-
-$('#button_extrato').click(function(){
-    tabelaExtrato()
-    closeBtnExtrato()
-    
-
-   $('.fundo_popup_select').click(function(){
-        $('.fundo_popup_select').fadeOut(300)
-        setTimeout(function(){
-            $('.fundo_popup_select').remove()
-        },300)
-    })
-
-    $('.extrato_user').click(function(e){
-        e.stopPropagation()
-    })
-
-    mostrarExtratos()
-})
-
-
-
-let listaExtrato = JSON.parse(localStorage.getItem('listaExtrato')) ? JSON.parse(localStorage.getItem('listaExtrato')) : []
-
-
-function extratoConta (tipoTransferencia,valor) {
-    let data = new Date()
-    let dia = data.getDate()
-    let mes = data.getMonth()
-    let ano = data.getFullYear()
-    let horas = data.getHours()
-    let minutos = data.getMinutes()
-
-    let dataTransferencia = `${dia}/${mes+1}/${ano}, às ${horas}h${minutos}`
-    console.log(dataTransferencia)
-
-    let extratoUser = {
-        transferencia: tipoTransferencia,
-        valorTransferencia: valor,
-        horarioTransferencia: dataTransferencia
-    }
-
-    listaExtrato.push(extratoUser)
-
-    localStorage.setItem('listaExtrato',JSON.stringify(listaExtrato))
-
-}
-
-
-function mostrarExtratos () {
-
-    
-    for(let i = 0;i <= listaExtrato.length;i++ ){
-        listaExtrato.reverse()
-        $('.container_extrato_user').append(`
-            <div class="valor_extrato_box">
-                <span class="nome_transacao">${listaExtrato[i].transferencia}</span>
-                <span class="valor_transferencia">${listaExtrato[i].valorTransferencia}</span>
-                <span class="data_transacao">${listaExtrato[i].horarioTransferencia}</span>
-            </div>
-        `)   
-    }
-}

@@ -67,3 +67,47 @@
         padding-left: 20px;
     }
 }
+
+@media screen and (max-width: 768px) {
+    
+    .valor_extrato_box {
+        position: relative;
+        width: 100%;
+        border-radius: 8px;
+        height: 120px;
+        border: 2px solid rgb(233, 233, 233);
+        transition: .4s;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .data_transacao {
+        position: absolute;
+        font-family: 'Montserrat',sans-serif;
+        font-size: 13px;
+        padding: 5px;
+        bottom: 0;
+        left: 0;
+        color: rgb(25, 25, 25);
+    }
+
+    
+    .valor_transferencia {
+        width: 100%;
+        font-family: 'Montserrat',sans-serif;
+        font-weight: bold;
+        color: rgb(0, 205, 0);
+        padding-left: 30px;
+        margin-top: -45px;
+    }
+
+
+    .extrato_user > h1 {
+        font-family: 'Montserrat',sans-serif;
+        color: black;
+        text-align: center;
+        padding-bottom: 0px;
+    }
+}
