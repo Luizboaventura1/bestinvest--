@@ -22,7 +22,7 @@ const tesouroDireto = [
     {
         nome:'TESOURO SELIC',
         investimentoMinimo: 127.25,
-        rentabilidade:  0.0994,
+        rentabilidade:  0.09,
         grauRiscoNome: 'Baixo',
         grauRisco: 'risco_baixo',
         id: 2
@@ -333,12 +333,10 @@ function selectTesouroDireto(id) {
             popUpTransacao()
             disableButton()
 
-            aplicacaoTesouroDireto = parseFloat(aplicacaoTesouroDireto) + parseFloat(valorInput)
             saldoConta = parseFloat(saldoConta) - parseFloat(valorInput)
 
             extratoConta('Aplicacao fundos',valorInput)
             atualizarSaldo(saldoConta)
-            atualizarTesouroDireto(aplicacaoTesouroDireto)
 
             adicionarAplicacao(tesouroDireto[id].nome,parseFloat(valorInput),tesouroDireto[id].rentabilidade)
 

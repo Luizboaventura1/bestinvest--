@@ -946,7 +946,7 @@ footer {
 }
 
 .wraper_tabela {
-    max-height: 400px;
+    max-height: 300px;
     width: 100%;
     max-width: 800px;
     overflow-y: auto;
@@ -958,16 +958,32 @@ footer {
     width: 100%;
     background-color: white;
     padding: 5px 0;
+    margin: 10px 0;
 }
 
 .investido_aplicacao {
+    display: flex;
+}
+
+.investido_aplicacao .row_box:nth-of-type(1) {
+    width: 90%;
+    height: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 20px 0;
 }
 
-.investido_aplicacao > span {
+.investido_aplicacao .row_box:nth-of-type(2) {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.investido_aplicacao  span {
     font-family: 'Monserrat',sans-serif;
     font-weight: bold;
 }

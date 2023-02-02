@@ -12,21 +12,6 @@
 
 
 
-function saldoTesouroDireto() {
-    //Verificar se tem saldo
-    let value = 0
-    if(localStorage.getItem('tesouroDireto') == NaN || localStorage.getItem('tesouroDireto') == null) {
-        localStorage.setItem('tesouroDireto',parseFloat(value))
-    }
-}
-
-saldoTesouroDireto()
-
-function atualizarTesouroDireto(value) {
-    localStorage.setItem('tesouroDireto',parseFloat(value))
-}
-
-
 function renderTesouroDireto() {
     
 }
@@ -67,7 +52,6 @@ let element = `
 
 function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 
-
     let aplicacaoSingle = {
         nomeAplicacao: nomeAplicacao,
         valorAplicado: valorAplicado,
@@ -80,7 +64,12 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 
     if(verificarAplicacao){
 
-        console.log('tudo certo')
+        listaAplicacoes.map((valor) => {
+            if(valor.nomeAplicacao == nomeAplicacao)
+            return valor.valorAplicado += valorAplicado
+            else{localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))}
+
+        })
 
         localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
     }
@@ -91,28 +80,51 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
     else {
         listaAplicacoes.push(aplicacaoSingle)
         localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
-        console.log('diferente')
     }
 
+    mostrarAplicacoes()
 }
 
 
-const teste = [
-    {
-        valor: 70
-    },
-    {
-        valor: 90
-    }
-]
-let valor = 0
 
-let list = teste.map((val)=> {
-    if(val.valor == 70){
-        valor = val.valor += 70
-    }
-})
+mostrarAplicacoes = () => {
+    $('.wraper_tabela').html('')
+    let i = 0
+    let id = 0
+    let id2 = 0
+    listaAplicacoes.map((value)=> {
+        $('.wraper_tabela').append(`
+        <div class="fundo_investido_usuario">
+            <div class="investido_aplicacao">
+                <div class="row_box">
+                    <span>R$ ${parseFloat(value.valorAplicado).toFixed(2).replace('.',',')}</span>
+                    <span>${value.rentabilidade}%</span>
+                    <span>${value.nomeAplicacao}</span>
+                </div>
+                <div class="row_box" onclick="btnArrow(id='${i++}')">
+                    <div class="arrow_display">
+                        <img src="../images/right-arrow.png" alt="Arrow right">
+                    </div>
+                </div>
+            </div>
+            <div class="info_investimento_user">
+                <div class="button_wraper">
+                    <div class="button_aplicar" onclick="btnAplicar(id='${id++}')">Aplicar</div>
+                    <div class="button_resgatar" onclick="btnResgatar(id='${id2++}')">Resgatar</div>
+                </div>
+            </div>
+            <div class="container_movimentar_dinheiro">
+                <div class="box_aplicar">
+                    <input type="number" placeholder="Aplicar">
+                    <button type="submit" class="btn_input" >Confirmar</button>
+                </div>
+                <div class="box_resgatar">
+                    <input type="number" placeholder="Resgatar">
+                    <button type="submit" class="btn_input" >Confirmar</button>
+                </div>
+            </div>
+        </div><!--fundo_investido_usuario-->`)
+    })
+}
 
-teste[0].valor = valor
-
-console.log(teste[0].valor)
+mostrarAplicacoes()

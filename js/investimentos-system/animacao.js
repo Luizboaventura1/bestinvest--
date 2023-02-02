@@ -1,13 +1,13 @@
 
 
 // Animacao do Arrow
+let id = 0
+let id2 = 0
+let id3 = 0
 
-function arrowFunc(id) {
-    $('.info_investimento_user').eq(id).slideToggle()
-}
-
-$('.arrow_display').click(function(){
-    arrow = $('.arrow_display')
+function btnArrow (id) {
+    id = id
+    arrow = $('.arrow_display').eq(id)
 
     if(arrow.css('rotate') == '0deg') {
         arrow.animate({
@@ -17,37 +17,40 @@ $('.arrow_display').click(function(){
         arrow.animate({
             'rotate': '0deg'
         },300)
-        $('.container_movimentar_dinheiro').hide()
     }
-    arrowFunc()
-})
+    $('.info_investimento_user').eq(id).slideToggle()
+}
 
 
-$('.button_aplicar').click(function(){
-    let boxAplicar = $('.box_aplicar')
+function btnAplicar(id) {
     $('.container_movimentar_dinheiro').hide()
     $('.box_resgatar').hide()
 
+    id2 = id
+    let boxAplicar = $('.box_aplicar').eq(id2)
+
     if(boxAplicar.css('display') == 'none') {
-        boxAplicar.fadeIn()
-        $('.container_movimentar_dinheiro').slideToggle()
+        $('.container_movimentar_dinheiro').fadeIn()
+        boxAplicar.fadeIn(100)
     }else {
         $('.container_movimentar_dinheiro').hide()
-        boxAplicar.fadeOut()
+        boxAplicar.hide(100)
     }
-})
+}
 
-$('.button_resgatar').click(function(){
-    let boxResgatar = $('.box_resgatar')
+
+function btnResgatar(id) {
     $('.container_movimentar_dinheiro').hide()
-    $('.box_aplicar').hide()
+    $('.boxAplicar').hide()
 
-    if(boxResgatar.css('display') == 'none'){
-        $('.box_resgatar').fadeIn()
-        $('.container_movimentar_dinheiro').slideToggle()
+    id3 = id
+    let box_resgatar = $('.box_resgatar').eq(id3)
+
+    if(box_resgatar.css('display') == 'none') {
+        $('.container_movimentar_dinheiro').fadeIn()
+        box_resgatar.fadeIn(100)
     }else {
-        $('.box_resgatar').fadeOut()
         $('.container_movimentar_dinheiro').hide()
+        box_resgatar.hide(100)
     }
-
-})
+}
