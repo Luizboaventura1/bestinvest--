@@ -615,6 +615,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.3s;
 }
 
 .centralizar_content {
@@ -633,6 +634,11 @@ body {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.157);
     display: flex;
     cursor: pointer;
+    transition: .3s;
+}
+
+.div_investir_box:hover {
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.337);
 }
 
 .grau_risco {
@@ -950,14 +956,14 @@ footer {
 
 .fundo_investido_usuario {
     width: 100%;
-    padding: 15px 0;
     background-color: white;
+    padding: 5px 0;
 }
 
 .investido_aplicacao {
     display: flex;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
     padding: 20px 0;
 }
 
@@ -1020,4 +1026,37 @@ footer {
 .arrow_display img {
     width: 100%;
     transition: .6s;
+}
+
+.container_movimentar_dinheiro {
+    padding: 5px 2%;
+    display: none;
+}
+
+.container_movimentar_dinheiro input {
+    border: 2px solid black;
+    background-color: #2e2f3e;
+    border-radius: 5px;
+    font-size: 17px;
+    padding: 10px;
+    margin-right: 1%;
+    color: white;
+    font-family: 'Montserrat',sans-serif;
+
+}
+
+.container_movimentar_dinheiro input::-webkit-inner-spin-button  {
+    -webkit-appearance: none;
+}
+
+.container_movimentar_dinheiro > div {
+    padding: 10px 0;
+}
+
+.box_aplicar {
+    display: none;
+}
+
+.box_resgatar {
+    display: none;
 }

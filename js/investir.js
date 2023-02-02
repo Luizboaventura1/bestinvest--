@@ -147,17 +147,14 @@ acoes.map((value)=> {
 //  Botao de cada lista de investimento
 
 function clickOpcaoInvestimento(){
-    // Estilizar os botoes
     $('#clickTesouroDireto').css('background-color','#ff9900')
     $('.display_renda_fixa').hide()
     $('.display_acoes').hide()
 
-    // Lista de cada investimento
     let btnRendaFixa = $('.display_renda_fixa')
     let btnTesouroDireto = $('.display_tesouro_direto')
     let btnAcoes = $('.display_acoes')
 
-    // Mostra a lista do tesouro direto
     $('#clickTesouroDireto').click(function(){{
         btnRendaFixa.hide()
         btnAcoes.hide()
@@ -168,7 +165,6 @@ function clickOpcaoInvestimento(){
         $('#clickRendaFixa').css('background-color','white')
     }})
 
-    // Mostra a lista da renda fixa
     $('#clickRendaFixa').click(function(){
         btnAcoes.hide()
         btnTesouroDireto.hide()
@@ -179,7 +175,6 @@ function clickOpcaoInvestimento(){
         $('#clickRendaFixa').css('background-color','#ff9900')
     })
 
-    // Mostra a lista de acoes
     $('#clickAcoes').click(function(){
         btnTesouroDireto.hide()
         btnRendaFixa.hide()
@@ -344,6 +339,8 @@ function selectTesouroDireto(id) {
             extratoConta('Aplicacao fundos',valorInput)
             atualizarSaldo(saldoConta)
             atualizarTesouroDireto(aplicacaoTesouroDireto)
+
+            adicionarAplicacao(tesouroDireto[id].nome,parseFloat(valorInput),tesouroDireto[id].rentabilidade)
 
         }
         else if(valorInput == 0){

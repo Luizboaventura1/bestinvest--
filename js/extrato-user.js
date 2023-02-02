@@ -81,7 +81,7 @@ function extratoConta (tipoTransferencia,valor) {
     if(minutos < 10) minutos = '0'+minutos
 
     let dataTransferencia = `${dia}/${mes}/${ano}, às ${horas}h${minutos}`
-    console.log(dataTransferencia)
+
 
     let extratoUser = {
         transferencia: tipoTransferencia,
