@@ -15,16 +15,16 @@ const tesouroDireto = [
         nome:'TESOURO IPCA+',
         investimentoMinimo: 55.30,
         rentabilidade: 6.17,
-        grauRiscoNome: 'Médio',
-        grauRisco: 'risco_medio',
+        grauRiscoNome: 'Baixo',
+        grauRisco: 'risco_baixo',
         id: 1
     },
     {
         nome:'TESOURO SELIC',
         investimentoMinimo: 127.25,
         rentabilidade:  0.0994,
-        grauRiscoNome: 'Médio',
-        grauRisco: 'risco_medio',
+        grauRiscoNome: 'Baixo',
+        grauRisco: 'risco_baixo',
         id: 2
     }
 ]

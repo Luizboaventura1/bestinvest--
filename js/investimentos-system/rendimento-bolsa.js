@@ -26,6 +26,7 @@ function atualizarTesouroDireto(value) {
     localStorage.setItem('tesouroDireto',parseFloat(value))
 }
 
-function renderTesouroDireto() {
 
+function renderTesouroDireto() {
+    
 }

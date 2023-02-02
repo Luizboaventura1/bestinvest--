@@ -22,6 +22,10 @@
     --riscoMuitoBaixo: var(--cor2);
 }
 
+html {
+    user-select: none;
+}
+
 body {
     background-image: linear-gradient(to right, rgb(235, 235, 236), rgb(208, 208, 220));
 }
@@ -47,7 +51,7 @@ body {
     width: 100%;
     background-color: #16171e;
     display: flex;
-    height: 120px;
+    height: 100px;
 }
 
 .centralizar_logo {
@@ -82,7 +86,7 @@ body {
 }
 
 .menu_desktop li {
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
 }
 
 .menu_desktop a {
@@ -174,14 +178,30 @@ body {
     font-family: 'Monserrat',sans-serif;
     font-weight: bold;
     color: white;
-    background-color: #ffb300;
     border-radius: 5px;
     text-decoration: none;
     transition: .3s;
+    display: flex;
+    align-items: center;
 }
 
 .opcao_carteira a:hover {
-    background-color: #7e28ff;
+    color: orange;
+}
+
+.opcao_carteira a svg {
+    fill: white;
+    transition: .3s;
+}
+
+.opcao_carteira a:hover svg {
+    fill: orange;
+}
+
+.opcao_carteira svg {
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
 }
 
 .dinheiro_carteira {
