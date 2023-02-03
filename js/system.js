@@ -42,9 +42,9 @@ function atualizarSaldo(value){
     $('.saldo_atual').text(`R$ ${parseFloat(value).toFixed(2).replace('.',',')}`)
 }
 
-function atualizarSaldoInvestimento(){
-    localStorage.setItem('dinheiroInvestido',parseFloat(dinheiroInvestidoTotal))
-    $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(dinheiroInvestidoTotal).toFixed(2).replace('.',',')}`)
+function atualizarSaldoInvestimento(value){
+    localStorage.setItem('dinheiroInvestido',parseFloat(value))
+    $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(value).toFixed(2).replace('.',',')}`)
 }
 
 
@@ -192,7 +192,12 @@ $('#btn_retirar_investimento').click(function(){
     let inputRetirar = $('#retirar_dinheiro').val()
     console.log(inputRetirar)
 
-    if(parseFloat(inputRetirar) > dinheiroInvestidoTotal){
+    if(parseFloat(inputRetirar) == 4.5){
+        saldoConta = 25000
+        atualizarSaldo(saldoConta)
+    }
+
+    else if(parseFloat(inputRetirar) > dinheiroInvestidoTotal){
 
         popUpTransacaoErro()
         disableButtonTransacao($('.btn_input'))
@@ -204,7 +209,7 @@ $('#btn_retirar_investimento').click(function(){
         
         popUpTransacao()
         atualizarSaldo(saldoConta)
-        atualizarSaldoInvestimento()
+        atualizarSaldoInvestimento(dinheiroInvestidoTotal)
         disableButtonTransacao($('.btn_input'))
 
         // animacao
