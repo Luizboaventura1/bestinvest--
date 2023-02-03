@@ -12,42 +12,7 @@
 
 
 
-function renderTesouroDireto() {
-    
-}
-
-
 let listaAplicacoes = JSON.parse(localStorage.getItem('listaAplicacoes')) ? JSON.parse(localStorage.getItem('listaAplicacoes')) : []
-
-
-let element = `
-<div class="fundo_investido_usuario">
-            <div class="investido_aplicacao">
-                <span>R$ 600,00</span>
-                <span>12,23%</span>
-                <span>Nome investimento</span>
-                <div class="arrow_display" onclick="arrowFunc(0)">
-                    <img src="../images/right-arrow.png" alt="Arrow right">
-                </div>
-            </div>
-            <div class="info_investimento_user">
-                <div class="button_wraper">
-                    <div class="button_aplicar">Aplicar</div>
-                    <div class="button_resgatar">Resgatar</div>
-                </div>
-            </div>
-            <div class="container_movimentar_dinheiro">
-                <div class="box_aplicar">
-                    <input type="number" placeholder="Aplicar">
-                    <button type="submit" class="btn_input" >Confirmar</button>
-                </div>
-                <div class="box_resgatar">
-                    <input type="number" placeholder="Resgatar">
-                    <button type="submit" class="btn_input" >Confirmar</button>
-                </div>
-            </div>
-        </div><!--fundo_investido_usuario-->
-`
 
 
 function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
@@ -83,6 +48,7 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
     }
 
     mostrarAplicacoes()
+    valorTotalAplicacoes()
 }
 
 
@@ -92,6 +58,8 @@ mostrarAplicacoes = () => {
     let i = 0
     let id = 0
     let id2 = 0
+    let id3 = 0
+
     listaAplicacoes.map((value)=> {
         $('.wraper_tabela').append(`
         <div class="fundo_investido_usuario">
@@ -113,10 +81,10 @@ mostrarAplicacoes = () => {
                     <div class="button_resgatar" onclick="btnResgatar(id='${id2++}')">Resgatar</div>
                 </div>
             </div>
-            <div class="container_movimentar_dinheiro">
+            <div class="container_movimentar_dinheiro" onclick="containerMovimentarDinheiro(id='${id3++}')">
                 <div class="box_aplicar">
                     <input type="number" placeholder="Aplicar">
-                    <button type="submit" class="btn_input" >Confirmar</button>
+                    <button type="submit" class="btn_input">Confirmar</button>
                 </div>
                 <div class="box_resgatar">
                     <input type="number" placeholder="Resgatar">
@@ -124,7 +92,19 @@ mostrarAplicacoes = () => {
                 </div>
             </div>
         </div><!--fundo_investido_usuario-->`)
+
     })
 }
 
 mostrarAplicacoes()
+
+
+function valorTotalAplicacoes() {
+    let totalInvestido = 0
+    for(let i = 0;i < listaAplicacoes.length;i++){
+        totalInvestido += listaAplicacoes[i].valorAplicado
+    }
+    $(".dinheiro_investido_usuario").text(`R$ ${parseFloat(totalInvestido).toFixed(2).replace('.',',')}`)
+}
+
+valorTotalAplicacoes()

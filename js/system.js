@@ -5,13 +5,13 @@ let dinheiroInvestidoTotal = localStorage.getItem('dinheiroInvestido')
 // Saldo da conta
 let saldoConta = localStorage.getItem('saldoConta')
 
-
+let coinValue = 25000
 
 // Mostrar saldo da conta
 
 function totalSaldo(){
-    if(localStorage.getItem('saldoConta') == null){
-        saldoConta += 1000
+    if(localStorage.getItem('saldoConta') == null || localStorage.getItem('saldoConta') == ''){
+        saldoConta += coinValue
         localStorage.setItem('saldoConta',saldoConta)
         $('.saldo_atual').text(`R$ ${parseFloat(saldoConta).toFixed(2).replace('.',',')}`)
     }else if(localStorage.getItem('saldoConta') >= 0){
