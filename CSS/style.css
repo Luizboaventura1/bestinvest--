@@ -1098,11 +1098,8 @@ footer {
 /* Graficos */
 
 .container_grafico {
-    width: 100%;
+    width: 220px;
     height: 120px;
     margin: auto;
     text-align: center;
-}
-.container_grafico > canvas {
-    margin: auto;
 }

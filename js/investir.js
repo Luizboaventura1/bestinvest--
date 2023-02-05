@@ -306,6 +306,7 @@ if(!$('#clickRendaFixa').disabled && !$('#clickAcoes').disabled){
 function selectTesouroDireto(id) {
     $('.fundo_popup_select').fadeIn()
     $(".container_select_investimento").fadeIn()
+    $(".myChart").fadeIn()
 
     resetarValorInvestimento()
 
