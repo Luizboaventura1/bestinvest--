@@ -1,6 +1,6 @@
-let chart = document.querySelector('#mychart').getContext('2d')
+let chart = document.querySelector('.myChart').getContext('2d')
 
-let values = [120.000,150.000]
+let values = [120.000,150.000,120.000,160.000]
 
 const labels = [
     'Nov',
@@ -24,9 +24,9 @@ const config = {
     type: 'bar',
     data,
     options: {
-        responsive: false,
-        scales:{ y: { min: 0, max: 120, ticks: { stepSize: 20 } } }
+        responsive: true,
     }
 }
 
 const myChart = new Chart(chart,config)
+

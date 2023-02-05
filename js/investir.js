@@ -161,7 +161,6 @@ function clickOpcaoInvestimento(){
         btnTesouroDireto.show()
 
         $('#clickTesouroDireto').css('background-color','#ff9900')
-
         //Temporario
 
         /*$('#clickAcoes').css('background-color','white')
@@ -233,7 +232,7 @@ function tabelaInv () {
             <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
         </div><!--valor_investir-->
         <div class="container_grafico">
-            <canvas id="mychart"></canvas>
+            <canvas class="myChart"></canvas>
         </div>
         <div class="lista_dados_inv">
             <ul>
@@ -304,12 +303,14 @@ if(!$('#clickRendaFixa').disabled && !$('#clickAcoes').disabled){
 
 
 // Tipos de investimentos
-
 function selectTesouroDireto(id) {
+    $('.fundo_popup_select').fadeIn()
+    $(".container_select_investimento").fadeIn()
+
     resetarValorInvestimento()
 
     // Aparecer tabela
-    tabelaInv()
+    //tabelaInv()
 
     // Fechar popup tabela
     buttonFlecharPopup()
