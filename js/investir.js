@@ -1,7 +1,4 @@
 // Opcoes de investimento do usuario
-
-
-
 const tesouroDireto = [
     {
         nome:'TESOURO PREFIXADO',
@@ -9,6 +6,7 @@ const tesouroDireto = [
         rentabilidade: 12.33,
         grauRiscoNome: 'Baixo',
         grauRisco: 'risco_muitobaixo',
+        historicoRentabilidade: [3,60,8,10,6,12],
         id: 0
     },
     {
@@ -17,6 +15,7 @@ const tesouroDireto = [
         rentabilidade: 6.17,
         grauRiscoNome: 'Baixo',
         grauRisco: 'risco_baixo',
+        historicoRentabilidade: [10,70,2,60,20,6],
         id: 1
     },
     {
@@ -25,6 +24,7 @@ const tesouroDireto = [
         rentabilidade:  0.09,
         grauRiscoNome: 'Baixo',
         grauRisco: 'risco_baixo',
+        historicoRentabilidade: [20,30,8,40,6,9],
         id: 2
     }
 ]
@@ -211,56 +211,6 @@ function resetarValorInvestimento () {
     $('#imposto_inv').text('')
 }
 
-// Tabela de investimentos
-
-function tabelaInv () {
-    let tabela = $(`
-    <div class="fundo_popup_select">
-    <div class="container_select_investimento">
-        <div class="fechar_select_inv">
-            
-            <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
- 
-        </div><!--fechar_select_inv-->
-        <h1 id="nome_investimento">
-            <!-- Nome do investimento -->
-        </h1>
-        <h2>
-            Quanto você quer investir?
-        </h2>
-        <div class="valor_investir">
-            <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
-        </div><!--valor_investir-->
-        <div class="container_grafico">
-            <canvas class="myChart"></canvas>
-        </div>
-        <div class="lista_dados_inv">
-            <ul>
-                <li class="valor_minimo_inv">valor min</li>
-                <li class="grau_risco_inv">risco</li>
-                <li class="liquidez_inv">liquidez</li>
-                <li class="rentabilidade_inv">rentabilidade</li>
-                <li class="imposto_inv">imposto</li>
-            </ul>
-            <ul>
-                <li class="valor_minimo_inv" id="valor_minimo">0</li>
-                <li class="grau_risco_inv" id="grau_risco">0</li>
-                <li class="liquidez_inv" id="liquidez">0</li>
-                <li class="rentabilidade_inv" id="rentabilidade_inv">0</li>
-                <li class="imposto_inv" id="imposto_inv">0</li>
-            </ul>
-        </div><!--lista_dados_inv-->
-        <div class="container_button_confirmar">
-            <button type="submit" id="button_confirmar_inv">Confirmar</button>
-        </div><!--container_button_confirmar-->
-        </div><!--container_select_investimento-->
-    </div><!--fundo_popup_select-->`)
-    
-    tabela.hide()
-    $('body').append(tabela)
-    tabela.fadeIn()
-}
-
 // Desabilitar Botao
 
 function disableButton() {
@@ -306,12 +256,12 @@ if(!$('#clickRendaFixa').disabled && !$('#clickAcoes').disabled){
 function selectTesouroDireto(id) {
     $('.fundo_popup_select').fadeIn()
     $(".container_select_investimento").fadeIn()
-    
 
     resetarValorInvestimento()
+    $('.barra')
+    grafico(id)
 
     // Aparecer tabela
-    //tabelaInv()
 
     // Fechar popup tabela
     buttonFlecharPopup()

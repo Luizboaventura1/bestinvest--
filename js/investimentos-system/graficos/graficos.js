@@ -1,55 +1,29 @@
-let chart = document.querySelector('.myChart').getContext('2d')
 
-const labels = [
-    ``,
-    '',
-    '',
-    '',
-    '',
-    ''
-]
+// Pegar os ultimos seis meses
 
-const data = {
-    labels,
-    datasets: [{
-        data: [6,4,3,9,3,],
-        label: 'Rentabilidade %',
-        fill: true,
-        backgroundColor: '#00ff22'
-    }]
-}
-
-const config = {
-    type: 'bar',
-    data:data,
-    options: {
-        responsive: true,
-        scales: {
-            x: {
-                grid: {
-                    color: 'white',
-                }
-            },
-            y: {
-                grid: {
-                    color: 'white'
-                }
-            }
-        }
-    }
-}
-
-
-const myChart = new Chart(chart,config)
-
-
-
-
-let months=["January","February","March","April","June", "July", "August", 
-"September", "October", "November", "December"];
+let months=["Jan","Feb","Mar","Abr","Jun", "Jul", "Ago", 
+"Sep", "Oct", "Nov", "Dez"];
 
 
 let currentMonth = new Date().getMonth()
 currentMonth += 1
 
 let ultimosSeisMeses = months.slice(currentMonth-6).concat(months.slice(0,currentMonth))
+
+
+for(let i = 0;i< ultimosSeisMeses.length;i++){
+    $('.box_bottom').append(`<div class="data">${ultimosSeisMeses[i]}</div>`)
+    $('.box_top').append(`<div class="barra"></div>`)
+}
+
+let valorHeight = 0
+function grafico(value){
+    let vl = value
+    for(let i = 0;i < (tesouroDireto[vl].historicoRentabilidade).length;i++){
+        valorHeight = tesouroDireto[vl].historicoRentabilidade[i]
+        $('.barra').css('transition','1s')
+        $(`.barra:nth-of-type(${i + 1})`).css('height',valorHeight+30+'%')
+    }
+}
+
+console.log(tesouroDireto[0].historicoRentabilidade[0 + 1])
