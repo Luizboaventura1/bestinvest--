@@ -65,8 +65,8 @@ mostrarAplicacoes = () => {
         <div class="fundo_investido_usuario">
             <div class="investido_aplicacao">
                 <div class="row_box">
-                    <span>R$ ${parseFloat(value.valorAplicado).toFixed(2).replace('.',',')}</span>
-                    <span>${value.rentabilidade}%</span>
+                    <span>R$ ${formatPreco(value.valorAplicado)}</span>
+                    <span>${formatPreco(value.rentabilidade)}%</span>
                     <span>${value.nomeAplicacao}</span>
                 </div>
                 <div class="row_box" onclick="btnArrow(id='${i++}')">
@@ -104,7 +104,9 @@ function valorTotalAplicacoes() {
     for(let i = 0;i < listaAplicacoes.length;i++){
         totalInvestido += listaAplicacoes[i].valorAplicado
     }
-    $(".dinheiro_investido_usuario").text(`R$ ${parseFloat(totalInvestido).toFixed(2).replace('.',',')}`)
+    $(".dinheiro_investido_usuario").text(`R$ ${formatPreco(totalInvestido)}`)
+
+    atualizarSaldoInvestimento(totalInvestido)
 }
 
 valorTotalAplicacoes()

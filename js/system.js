@@ -13,9 +13,9 @@ function totalSaldo(){
     if(localStorage.getItem('saldoConta') == null || localStorage.getItem('saldoConta') == ''){
         saldoConta += coinValue
         localStorage.setItem('saldoConta',saldoConta)
-        $('.saldo_atual').text(`R$ ${parseFloat(saldoConta).toFixed(2).replace('.',',')}`)
+        $('.saldo_atual').text(`R$ ${formatPreco(saldoConta)}`)
     }else if(localStorage.getItem('saldoConta') >= 0){
-        $('.saldo_atual').text(`R$ ${parseFloat(saldoConta).toFixed(2).replace('.',',')}`)
+        $('.saldo_atual').text(`R$ ${formatPreco(saldoConta)}`)
     }
 }
 
@@ -26,9 +26,9 @@ function totalInvestido(){
     if(localStorage.getItem('dinheiroInvestido') == null){
         dinheiroInvestidoTotal = 0
         localStorage.setItem('dinheiroInvestido',dinheiroInvestidoTotal)
-        $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(dinheiroInvestidoTotal).toFixed(2).replace('.',',')}`)
+        $('.dinheiro_investido_usuario').text(`R$ ${formatPreco(dinheiroInvestidoTotal)}`)
     }else if(localStorage.getItem('dinheiroInvestido') >= 0){
-        $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(dinheiroInvestidoTotal).toFixed(2).replace('.',',')}`)
+        $('.dinheiro_investido_usuario').text(`R$ ${formatPreco(dinheiroInvestidoTotal)}`)
     }
 }
 
@@ -39,12 +39,12 @@ totalInvestido()
 
 function atualizarSaldo(value){
     localStorage.setItem('saldoConta',parseFloat(value))
-    $('.saldo_atual').text(`R$ ${parseFloat(value).toFixed(2).replace('.',',')}`)
+    $('.saldo_atual').text(`R$ ${formatPreco(value)}`)
 }
 
 function atualizarSaldoInvestimento(value){
     localStorage.setItem('dinheiroInvestido',parseFloat(value))
-    $('.dinheiro_investido_usuario').text(`R$ ${parseFloat(value).toFixed(2).replace('.',',')}`)
+    $('.dinheiro_investido_usuario').text(`R$ ${formatPreco(value)}`)
 }
 
 
@@ -245,3 +245,28 @@ $('.menu_burguer').click(function(){
     menu.slideToggle()
 })
 
+
+// Formatar preco
+function formatPreco(valorAtual) {
+    valorAtual = parseFloat(valorAtual).toFixed(2)
+    valorFormatar = valorAtual.split('.')
+
+    let newValue = formatTotal(valorFormatar)
+
+    return newValue
+}
+
+function formatTotal(valorFormatar) {
+    if(valorFormatar[0] < 1000){
+        return valorFormatar[0]+','+valorFormatar[1]
+    }
+    else if(valorFormatar[0] < 10000){
+        return valorFormatar[0][0]+','+valorFormatar[0].substr(1,valorFormatar[0].length)+','+valorFormatar[1]
+    }
+    else if(valorFormatar[0] < 100000) {
+        return valorFormatar[0][0]+valorFormatar[0][1]+','+valorFormatar[0].substr(2,valorFormatar[0].length)+','+valorFormatar[1]
+    }
+    else if(valorFormatar[0] < 1000000){
+        return valorFormatar[0][0]+valorFormatar[0][1]+valorFormatar[0][2]+','+valorFormatar[0].substr(3,valorFormatar[0].length)+','+valorFormatar[1]
+    }
+}

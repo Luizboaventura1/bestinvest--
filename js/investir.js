@@ -8,7 +8,7 @@ const tesouroDireto = [
         investimentoMinimo: 35.43,
         rentabilidade: 12.33,
         grauRiscoNome: 'Baixo',
-        grauRisco: 'risco_baixo',
+        grauRisco: 'risco_muitobaixo',
         id: 0
     },
     {
@@ -70,13 +70,13 @@ tesouroDireto.map((value)=> {
             <div class="inv_minimo">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Inv minimo</span>
-                    <span class="info_valor">R$ ${value.investimentoMinimo.toFixed(2).replace('.',',')}</span>
+                    <span class="info_valor">R$ ${formatPreco(value.investimentoMinimo)}</span>
                 </div>
             </div><!--inv_minimo-->
             <div class="rentabilidade_box">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Em 12 meses</span>
-                    <span id="rentabilidade_grau" class="info_valor">${value.rentabilidade}%</span>
+                    <span id="rentabilidade_grau" class="info_valor">${formatPreco(value.rentabilidade)}%</span>
                 </div>
             </div><!--rentabilidade_box-->
         </div><!--box_info_investir2-->
@@ -99,13 +99,13 @@ rendaFixa.map((value)=> {
             <div class="inv_minimo">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Inv minimo</span>
-                    <span class="info_valor">R$ ${value.investimentoMinimo.toFixed(2).replace('.',',')}</span>
+                    <span class="info_valor">R$ ${formatPreco(value.investimentoMinimo)}</span>
                 </div>
             </div><!--inv_minimo-->
             <div class="rentabilidade_box">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Em 12 meses</span>
-                    <span id="rentabilidade_grau" class="info_valor">${value.rentabilidade}% do cdi</span>
+                    <span id="rentabilidade_grau" class="info_valor">${formatPreco(value.rentabilidade)}% do cdi</span>
                 </div>
             </div><!--rentabilidade_box-->
         </div><!--box_info_investir2-->
@@ -128,13 +128,13 @@ acoes.map((value)=> {
             <div class="inv_minimo">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Inv minimo</span>
-                    <span class="info_valor">R$ ${value.investimentoMinimo.toFixed(2).replace('.',',')}</span>
+                    <span class="info_valor">R$ ${formatPreco(value.investimentoMinimo)}</span>
                 </div>
             </div><!--inv_minimo-->
             <div class="rentabilidade_box">
                 <div class="bloco_span_wraper">
                     <span class="span_info_investir">Em 12 meses</span>
-                    <span id="rentabilidade_grau" class="info_valor">${value.rentabilidade}%</span>
+                    <span id="rentabilidade_grau" class="info_valor">${formatPreco(value.rentabilidade)}%</span>
                 </div>
             </div><!--rentabilidade_box-->
         </div><!--box_info_investir2-->
@@ -161,8 +161,11 @@ function clickOpcaoInvestimento(){
         btnTesouroDireto.show()
 
         $('#clickTesouroDireto').css('background-color','#ff9900')
-        $('#clickAcoes').css('background-color','white')
-        $('#clickRendaFixa').css('background-color','white')
+
+        //Temporario
+
+        /*$('#clickAcoes').css('background-color','white')
+        $('#clickRendaFixa').css('background-color','white')*/
     }})
 
     $('#clickRendaFixa').click(function(){
@@ -283,6 +286,18 @@ function disableButton() {
     },3200)
 }
 
+//Em construcao
+if(!$('#clickRendaFixa').disabled && !$('#clickAcoes').disabled){
+
+
+    $('#clickRendaFixa').prop('disabled', true);
+    $('#clickRendaFixa').css('background-color','#d3d3d3')
+    $('#clickRendaFixa').css('color','white')
+
+    $('#clickAcoes').prop('disabled', true);
+    $('#clickAcoes').css('background-color','#d3d3d3')
+    $('#clickAcoes').css('color','white')
+}
 
 
 // Tipos de investimentos

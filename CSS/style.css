@@ -593,6 +593,7 @@ body {
     margin: 8px;
     transition: .5s;
     cursor: pointer;
+    border: none;
 }
 
 .box_opcao_investir:hover {
@@ -934,7 +935,7 @@ footer {
 }
 
 
-/* Container Investimentos Total */
+/* Container Investimentos Total de Aplicacoes */
 
 
 .container_investimentos_total {
@@ -1001,6 +1002,7 @@ footer {
 .investido_aplicacao  span {
     font-family: 'Monserrat',sans-serif;
     font-weight: bold;
+    font-size: 15px;
 }
 
 .info_investimento_user {

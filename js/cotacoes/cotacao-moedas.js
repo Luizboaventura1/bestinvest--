@@ -15,13 +15,13 @@ fetch(url + moedas)
             const btcBRL = data.BTCBRL
             const ethBRL = data.ETHBRL
 
-            $("#moedaUSDBRL").text(parseFloat(usdBRL.bid).toFixed(3).replace('.',','))
+            $("#moedaUSDBRL").text(formatPreco(usdBRL.bid))
             $('#horarioUSD').text(usdBRL.create_date.split(' ')[1])
 
-            $("#moedaBTCBRL").text(parseFloat(btcBRL.bid).toFixed(3).replace('.',','))
+            $("#moedaBTCBRL").text(formatPreco(btcBRL.bid))
             $('#horarioBTC').text(btcBRL.create_date.split(' ')[1])
 
-            $("#moedaETHBRL").text(parseFloat(ethBRL.bid).toFixed(3).replace('.',','))
+            $("#moedaETHBRL").text(formatPreco(ethBRL.bid))
             $('#horarioETH').text(ethBRL.create_date.split(' ')[1])
         }))
 })

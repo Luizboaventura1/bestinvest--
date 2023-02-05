@@ -67,6 +67,11 @@ $('#button_extrato').click(function(){
 let listaExtrato = JSON.parse(localStorage.getItem('listaExtrato')) ? JSON.parse(localStorage.getItem('listaExtrato')) : []
 
 
+//Para ordenar os extratos da forma correta
+listaExtrato.reverse()
+
+
+// Criar Extrato
 function extratoConta (tipoTransferencia,valor) {
     let data = new Date()
     let dia = data.getDate()
@@ -85,7 +90,7 @@ function extratoConta (tipoTransferencia,valor) {
 
     let extratoUser = {
         transferencia: tipoTransferencia,
-        valorTransferencia: `R$ ${parseFloat(valor).toFixed(2).replace('.',',')}`,
+        valorTransferencia: `R$ ${formatPreco(valor)}`,
         horarioTransferencia: dataTransferencia
     }
 
@@ -98,7 +103,6 @@ function extratoConta (tipoTransferencia,valor) {
 
 
 function mostrarExtratos () {
-    listaExtrato.reverse()
     
     for(let i = 0;i <= listaExtrato.length;i++ ){
         $('.container_extrato_user').append(`
