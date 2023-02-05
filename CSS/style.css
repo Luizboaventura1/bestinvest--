@@ -1093,3 +1093,19 @@ footer {
 .box_resgatar {
     display: none;
 }
+
+
+/* Graficos */
+
+.container_grafico {
+    width: 100%;
+    max-width: 400px;
+    height: 110px;
+    display: block;
+}
+
+.container_grafico canvas {
+    display: block;
+    width: 300px;
+    height: 100px;
+}

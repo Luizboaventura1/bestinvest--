@@ -232,6 +232,9 @@ function tabelaInv () {
         <div class="valor_investir">
             <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
         </div><!--valor_investir-->
+        <div class="container_grafico">
+            <canvas id="mychart"></canvas>
+        </div>
         <div class="lista_dados_inv">
             <ul>
                 <li class="valor_minimo_inv">valor min</li>
@@ -328,10 +331,8 @@ function selectTesouroDireto(id) {
 
 
     // Dados da conta e de investimentos
-    let aplicacaoTesouroDireto = parseFloat(localStorage.getItem('tesouroDireto'))
     let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
-    
-    
+
 
     //Confirmar investimento
     $('#button_confirmar_inv').click(function(){
