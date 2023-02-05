@@ -1,35 +1,55 @@
 let chart = document.querySelector('.myChart').getContext('2d')
 
-//let values = [120.000,150.000,120.000,160.000]
-
 const labels = [
-    'Ago',
-    'Set',
-    'Out',
-    'Nov',
-    'Dez',
-    'Jan',
-    'Fev'
-
+    ``,
+    '',
+    '',
+    '',
+    '',
+    ''
 ]
 
 const data = {
     labels,
     datasets: [{
-        data: [120000,130000,110000,292922,100000,50000],
-        label: 'Rentabilidade',
+        data: [6,4,3,9,3,],
+        label: 'Rentabilidade %',
         fill: true,
         backgroundColor: '#00ff22'
     }]
 }
-chart.canvas.style.backgroundColor = 'white'
+
 const config = {
     type: 'bar',
-    data,
+    data:data,
     options: {
         responsive: true,
+        scales: {
+            x: {
+                grid: {
+                    color: 'white',
+                }
+            },
+            y: {
+                grid: {
+                    color: 'white'
+                }
+            }
+        }
     }
 }
 
+
 const myChart = new Chart(chart,config)
 
+
+
+
+let months=["January","February","March","April","June", "July", "August", 
+"September", "October", "November", "December"];
+
+
+let currentMonth = new Date().getMonth()
+currentMonth += 1
+
+let ultimosSeisMeses = months.slice(currentMonth-6).concat(months.slice(0,currentMonth))
