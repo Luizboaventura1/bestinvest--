@@ -33,8 +33,56 @@ function totalInvestido(){
 }
 
 
-totalSaldo()
 totalInvestido()
+
+
+// Opcao de esconder saldo da conta
+
+let verificarEye = JSON.parse(localStorage.getItem('eyeVerify')) ? JSON.parse(localStorage.getItem('eyeVerify')) : ''
+
+let olhoOpen = $('#eye_open')
+let olhoClosed = $('#eye_closed')
+
+if(verificarEye == 'open'){
+    totalSaldo()
+    olhoClosed.fadeOut(200).css('display','none')
+    olhoOpen.fadeIn(200).css('display','block')
+}
+else if(verificarEye == 'close') {
+    $('.saldo_atual').text('')
+    $('.saldo_atual').append('<span></span>')
+    olhoClosed.fadeIn(200).css('display','block')
+    olhoOpen.fadeOut(200).css('display','none')
+}
+console.log(verificarEye)
+
+
+function olhoMostrarSaldo() {
+
+    let olhoOpen = $('#eye_open')
+    let olhoClosed = $('#eye_closed')
+
+    $('#eye_open').click(function(){
+        $('.saldo_atual').text('')
+        $('.saldo_atual').append('<span></span>')
+        olhoClosed.fadeIn(200).css('display','block')
+        olhoOpen.fadeOut(200).css('display','none')
+
+        verificarEye = 'close'
+        localStorage.setItem('eyeVerify',JSON.stringify(verificarEye))
+    })
+    $('#eye_closed').click(function(){
+        totalSaldo()
+        olhoClosed.fadeOut(200).css('display','none')
+        olhoOpen.fadeIn(200).css('display','block')
+
+        verificarEye = 'open'
+        localStorage.setItem('eyeVerify',JSON.stringify(verificarEye))
+
+    })
+}
+
+olhoMostrarSaldo()
 
 
 function atualizarSaldo(value){

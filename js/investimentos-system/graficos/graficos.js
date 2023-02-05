@@ -25,5 +25,3 @@ function grafico(value){
         $(`.barra:nth-of-type(${i + 1})`).css('height',valorHeight+30+'%')
     }
 }
-
-console.log(tesouroDireto[0].historicoRentabilidade[0 + 1])

@@ -258,7 +258,6 @@ function selectTesouroDireto(id) {
     $(".container_select_investimento").fadeIn()
 
     resetarValorInvestimento()
-    $('.barra')
     grafico(id)
 
     // Aparecer tabela
