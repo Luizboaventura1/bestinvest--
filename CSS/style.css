@@ -219,7 +219,7 @@ body {
     padding: 53px;
     font-family: 'Montserrat', sans-serif;
     color: white;
-    font-size: 28px;
+    font-size: 25px;
     justify-content: center;
     align-items: center;
     transition: .5s;
@@ -244,17 +244,33 @@ body {
 
 .saldo_atual {
     font-family: 'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     color: white;
     padding: 0px 0px 0px 60px; 
 }
 
-.saldo_atual > span {
-    background-image: linear-gradient(to top right,rgba(236, 236, 236, 0.569),#8585856d);
-    height: 80px;
+.open-span {
+    background-image: linear-gradient(to top right,rgba(0, 0, 0, 0.549),#25252586);
+    height: 40px;
     padding: 1px 60px;
     border-radius: 10px;
+    background-size: 300% 100%,cover;
+    background-position: 100%, center;
+    animation: bg linear 3s infinite;
+}
+
+
+@keyframes bg {
+    0% {
+        background-position: 0%;
+    }
+    50% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: 0%;
+    }
 }
 
 .olho_box {
@@ -281,7 +297,7 @@ body {
 
 .titulo_saldo {
     font-family: 'Montserrat', sans-serif;
-    font-size: 19px;
+    font-size: 17px;
     font-weight: bold;
     color: rgb(255, 174, 0);
     padding: 50px 0px 0px 60px; 
@@ -298,7 +314,7 @@ body {
 .btn_extrato {
     border: none;
     font-family: 'Montserrat',sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     color: white;
     font-weight: bold;
     background-color: transparent;

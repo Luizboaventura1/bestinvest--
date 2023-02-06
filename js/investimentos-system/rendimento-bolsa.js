@@ -110,3 +110,4 @@ function valorTotalAplicacoes() {
 }
 
 valorTotalAplicacoes()
+olhoMostrarSaldo()

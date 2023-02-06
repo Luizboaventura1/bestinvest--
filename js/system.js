@@ -10,7 +10,7 @@ let coinValue = 25000
 // Mostrar saldo da conta
 
 function totalSaldo(){
-    if(localStorage.getItem('saldoConta') == null || localStorage.getItem('saldoConta') == ''){
+    if(localStorage.getItem('saldoConta') == null){
         saldoConta += coinValue
         localStorage.setItem('saldoConta',saldoConta)
         $('.saldo_atual').text(`R$ ${formatPreco(saldoConta)}`)
@@ -33,38 +33,37 @@ function totalInvestido(){
 }
 
 
-totalInvestido()
-
-
 // Opcao de esconder saldo da conta
 
-let verificarEye = JSON.parse(localStorage.getItem('eyeVerify')) ? JSON.parse(localStorage.getItem('eyeVerify')) : ''
-
-let olhoOpen = $('#eye_open')
-let olhoClosed = $('#eye_closed')
-
-if(verificarEye == 'open'){
-    totalSaldo()
-    olhoClosed.fadeOut(200).css('display','none')
-    olhoOpen.fadeIn(200).css('display','block')
-}
-else if(verificarEye == 'close') {
-    $('.saldo_atual').text('')
-    $('.saldo_atual').append('<span></span>')
-    olhoClosed.fadeIn(200).css('display','block')
-    olhoOpen.fadeOut(200).css('display','none')
-}
-console.log(verificarEye)
-
-
 function olhoMostrarSaldo() {
+    let verificarEye = JSON.parse(localStorage.getItem('eyeVerify')) ? JSON.parse(localStorage.getItem('eyeVerify')) : ''
 
     let olhoOpen = $('#eye_open')
     let olhoClosed = $('#eye_closed')
 
+    if(verificarEye == 'open'){
+        totalSaldo()
+        totalInvestido()
+        olhoClosed.fadeOut(200).css('display','none')
+        olhoOpen.fadeIn(200).css('display','block')
+    }
+    else if(verificarEye == 'close') {
+        $('.saldo_atual').text('')
+        $('.saldo_atual').append('<span class="open-span"></span>')
+        $('.dinheiro_investido_usuario').text('')
+        $('.dinheiro_investido_usuario').append('<span class="open-span"></span>')
+
+        olhoClosed.fadeIn(200).css('display','block')
+        olhoOpen.fadeOut(200).css('display','none')
+    }
+
     $('#eye_open').click(function(){
         $('.saldo_atual').text('')
-        $('.saldo_atual').append('<span></span>')
+        $('.saldo_atual').append('<span class="open-span"></span>')
+
+        $('.dinheiro_investido_usuario').text('')
+        $('.dinheiro_investido_usuario').append('<span class="open-span"></span>')
+
         olhoClosed.fadeIn(200).css('display','block')
         olhoOpen.fadeOut(200).css('display','none')
 
@@ -73,6 +72,7 @@ function olhoMostrarSaldo() {
     })
     $('#eye_closed').click(function(){
         totalSaldo()
+        totalInvestido()
         olhoClosed.fadeOut(200).css('display','none')
         olhoOpen.fadeIn(200).css('display','block')
 
@@ -238,7 +238,6 @@ function verificarInput() {
 
 $('#btn_retirar_investimento').click(function(){
     let inputRetirar = $('#retirar_dinheiro').val()
-    console.log(inputRetirar)
 
     if(parseFloat(inputRetirar) == 4.5){
         saldoConta = 25000
