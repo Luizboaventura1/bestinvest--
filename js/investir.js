@@ -36,8 +36,7 @@ const rendaFixa = [
         rentabilidade: 89,
         grauRiscoNome: 'Muito baixo',
         grauRisco: 'risco_muitobaixo',
-        impostodeRenda: 'Isento',
-        liquidez: 'Após 90 dias',
+        historicoRentabilidade: [45,12,78,44,60,89],
         id: 0
     }
 ]
@@ -45,11 +44,11 @@ const rendaFixa = [
 const acoes = [
     {
         nome:'Select',
-        investimentoMinimo: 0,
-        rentabilidade: 0,
-        taxadeAdministracao: 0,
-        cashBack: 0,
+        investimentoMinimo: 40,
+        rentabilidade: 7,
+        historicoRentabilidade: [23,78,12,32,56,7],
         id: 0,
+        grauRiscoNome: 'Baixo',
         grauRisco: 'risco_baixo'
     }
 ]
@@ -143,6 +142,56 @@ acoes.map((value)=> {
 })
 
 
+// Tabela de investimentos
+
+function tabelaInv () {
+    let tabela = $(`
+    <div class="fundo_popup_select">
+        <div class="container_select_investimento">
+            <div class="fechar_select_inv">
+                
+                <img src="../images/icone-closepopup.png" alt="Icone fechar Popup">
+     
+            </div><!--fechar_select_inv-->
+            <h1 id="nome_investimento">
+                <!-- Nome do investimento -->
+            </h1>
+            <h2>
+                Quanto você quer investir?
+            </h2>
+            <div class="valor_investir">
+                <p>R$</p><input type="number" class="valor-user-investir" placeholder="valor">
+            </div><!--valor_investir-->
+            <div class="container_grafico">
+                <div class="box_top">
+                    <!-- Barra grafico -->
+                </div>
+                <div class="box_bottom">
+                    <!-- Meses -->
+                </div>
+            </div>
+            <div class="lista_dados_inv">
+                <ul>
+                    <li class="valor_minimo_inv">valor min</li>
+                    <li class="grau_risco_inv">risco</li>
+                    <li class="rentabilidade_inv">rentabilidade</li>
+                </ul>
+                <ul>
+                    <li class="valor_minimo_inv" id="valor_minimo">0</li>
+                    <li class="grau_risco_inv" id="grau_risco">0</li>
+                    <li class="rentabilidade_inv" id="rentabilidade_inv">0</li>
+                </ul>
+            </div><!--lista_dados_inv-->
+            <div class="container_button_confirmar">
+                <button type="submit" id="button_confirmar_inv">Confirmar</button>
+            </div><!--container_button_confirmar-->
+            </div><!--container_select_investimento-->
+            </div>
+        `)
+    tabela.hide()
+    $('body').append(tabela)
+    tabela.fadeIn()
+}
 
 //  Botao de cada lista de investimento
 
@@ -161,16 +210,14 @@ function clickOpcaoInvestimento(){
         btnTesouroDireto.show()
 
         $('#clickTesouroDireto').css('background-color','#ff9900')
-        //Temporario
-
-        /*$('#clickAcoes').css('background-color','white')
-        $('#clickRendaFixa').css('background-color','white')*/
+        $('#clickAcoes').css('background-color','white')
+        $('#clickRendaFixa').css('background-color','white')
     }})
 
     $('#clickRendaFixa').click(function(){
         btnAcoes.hide()
         btnTesouroDireto.hide()
-        btnRendaFixa.hide()//Em construcao
+        btnRendaFixa.show()
 
         $('#clickTesouroDireto').css('background-color','white')
         $('#clickAcoes').css('background-color','white')
@@ -180,7 +227,7 @@ function clickOpcaoInvestimento(){
     $('#clickAcoes').click(function(){
         btnTesouroDireto.hide()
         btnRendaFixa.hide()
-        btnAcoes.hide()//Em construcao
+        btnAcoes.show()
 
         $('#clickTesouroDireto').css('background-color','white')
         $('#clickAcoes').css('background-color','#ff9900')
@@ -238,29 +285,13 @@ function disableButton() {
     },3200)
 }
 
-//Em construcao
-if(!$('#clickRendaFixa').disabled && !$('#clickAcoes').disabled){
-
-
-    $('#clickRendaFixa').prop('disabled', true);
-    $('#clickRendaFixa').css('background-color','#d3d3d3')
-    $('#clickRendaFixa').css('color','white')
-
-    $('#clickAcoes').prop('disabled', true);
-    $('#clickAcoes').css('background-color','#d3d3d3')
-    $('#clickAcoes').css('color','white')
-}
-
-
 // Tipos de investimentos
 function selectTesouroDireto(id) {
-    $('.fundo_popup_select').fadeIn()
-    $(".container_select_investimento").fadeIn()
+    tabelaInv()
 
+    grafico(tesouroDireto,id)
     resetarValorInvestimento()
-    grafico(id)
 
-    // Aparecer tabela
 
     // Fechar popup tabela
     buttonFlecharPopup()
@@ -270,9 +301,6 @@ function selectTesouroDireto(id) {
     $('.valor_minimo_inv').css('display','block')
     $('.grau_risco_inv').css('display','block')
     $('.rentabilidade_inv').css('display','block')
-    $('.liquidez_inv').css('display','none')
-    $('.imposto_inv').css('display','none')
-
 
 
     $('#nome_investimento').text(`${tesouroDireto[id].nome}`)
@@ -285,11 +313,8 @@ function selectTesouroDireto(id) {
     let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
 
 
-    //Confirmar investimento
     $('#button_confirmar_inv').click(function(){
-        //Input para investir
         let valorInput = $('.valor-user-investir').val()
-
         if(parseFloat(valorInput) < tesouroDireto[id].investimentoMinimo){
             popUpTransacaoErro()
             disableButton()
@@ -306,6 +331,7 @@ function selectTesouroDireto(id) {
             atualizarSaldo(saldoConta)
 
             adicionarAplicacao(tesouroDireto[id].nome,parseFloat(valorInput),tesouroDireto[id].rentabilidade)
+            olhoMostrarSaldo()
 
         }
         else if(valorInput == 0){
@@ -321,42 +347,31 @@ function selectTesouroDireto(id) {
 
 
 function selectRendaFixa(id) {
+    tabelaInv()
+
     resetarValorInvestimento()
+    grafico(rendaFixa,id)
 
-        // Aparecer tabela
-        tabelaInv()
 
-        // Fechar popup tabela
-        $('.fechar_select_inv > img').click(function(){
-            $('.container_select_investimento').remove()
-            $('.fundo_popup_select').remove()
-        })
-    
-        $('.fundo_popup_select').click(function(){
-            $('.fundo_popup_select').remove()
-        })
-    
-        $('.container_select_investimento').click(function(e){
-            e.stopPropagation()
-        })
+    // Fechar popup tabela
+    buttonFlecharPopup()
+    verificarFecharPopup()
 
 
     $('#valor_minimo').text(`R$ ${rendaFixa[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
-
     $('.valor_minimo_inv').css('display','block')
     $('.grau_risco_inv').css('display','block')
     $('.rentabilidade_inv').css('display','block')
-    $('.imposto_inv').css('display','block')
-    $('.liquidez_inv').css('display','block')
 
 
     $('#nome_investimento').text(`${rendaFixa[id].nome}`)
     $('#valor_minimo').text(`R$ ${rendaFixa[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
     $('#grau_risco').text(`${rendaFixa[id].grauRiscoNome}`)
     $('#rentabilidade_inv').text(`${rendaFixa[id].rentabilidade}% do cdi`)
-    $('#imposto_inv').text(`${rendaFixa[id].impostodeRenda}`)
-    $('#liquidez').text(`${rendaFixa[id].liquidez}`)
 
+
+    // Dados da conta e de investimentos
+    let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
 
     $('#button_confirmar_inv').click(function(){
         let valorInput = $('.valor-user-investir').val()
@@ -364,9 +379,17 @@ function selectRendaFixa(id) {
             popUpTransacaoErro()
             disableButton()
         }
-        else if(parseFloat(valorInput) >= rendaFixa[id].investimentoMinimo) {
+        else if(parseFloat(valorInput) >= rendaFixa[id].investimentoMinimo && parseFloat(valorInput) <= parseFloat(saldoConta)) {
             popUpTransacao()
             disableButton()
+
+            saldoConta = parseFloat(saldoConta) - parseFloat(valorInput)
+
+            extratoConta('Aplicacao fundos',valorInput)
+            atualizarSaldo(saldoConta)
+
+            adicionarAplicacao(rendaFixa[id].nome,parseFloat(valorInput),rendaFixa[id].rentabilidade)
+            olhoMostrarSaldo()
         }
         else if(valorInput == 0){
             popUpTransacaoErro()
@@ -379,33 +402,53 @@ function selectRendaFixa(id) {
 
 
 function selectAcoes(id) {
+    tabelaInv()
+
     resetarValorInvestimento()
+    grafico(acoes,id)
 
-        // Aparecer tabela
-        tabelaInv()
+    // Fechar popup tabela
+    buttonFlecharPopup()
+    verificarFecharPopup()
 
-        // Fechar popup tabela
-        $('.fechar_select_inv > img').click(function(){
-            $('.container_select_investimento').remove()
-            $('.fundo_popup_select').remove()
-        })
-    
-        $('.fundo_popup_select').click(function(){
-            $('.fundo_popup_select').remove()
-        })
-    
-        $('.container_select_investimento').click(function(e){
-            e.stopPropagation()
-        })
+    $('#valor_minimo').text(`R$ ${acoes[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
+    $('.valor_minimo_inv').css('display','block')
+    $('.grau_risco_inv').css('display','block')
+    $('.rentabilidade_inv').css('display','block')
 
+
+    $('#nome_investimento').text(`${acoes[id].nome}`)
+    $('#valor_minimo').text(`R$ ${acoes[id].investimentoMinimo.toFixed(2).replace('.',',')}`)
+    $('#grau_risco').text(`${acoes[id].grauRiscoNome}`)
+    $('#rentabilidade_inv').text(`${acoes[id].rentabilidade}%`)
+
+
+    // Dados da conta e de investimentos
+    let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
 
 
     $('#button_confirmar_inv').click(function(){
         let valorInput = $('.valor-user-investir').val()
         if(parseFloat(valorInput) < acoes[id].investimentoMinimo){
-            alert('Valor baixo')
-        }else {
-            alert('Valor aceito')
+            popUpTransacaoErro()
+            disableButton()
+        }
+        else if(parseFloat(valorInput) >= acoes[id].investimentoMinimo && parseFloat(valorInput) <= parseFloat(saldoConta)) {
+            popUpTransacao()
+            disableButton()
+
+            saldoConta = parseFloat(saldoConta) - parseFloat(valorInput)
+
+            extratoConta('Aplicacao fundos',valorInput)
+            atualizarSaldo(saldoConta)
+
+            adicionarAplicacao(acoes[id].nome,parseFloat(valorInput),acoes[id].rentabilidade)
+            olhoMostrarSaldo()
+        }
+        else if(valorInput == 0){
+            popUpTransacaoErro()
+            disableButton()
+
         }
     })
 }

@@ -167,19 +167,19 @@ function buttonFlecharPopup () {
     $('.fechar_select_inv > img').click(function(){
         $('.container_select_investimento').fadeOut(300)
         $('.fundo_popup_select').fadeOut(300)
-        /*setTimeout(function(){
+        setTimeout(function(){
             $('.container_select_investimento').remove()
             $('.fundo_popup_select').remove()
-        },400)*/
+        },400)
     })
 }
 
 function verificarFecharPopup() {
     $('.fundo_popup_select').click(function(){
         $('.fundo_popup_select').fadeOut(300)
-        /*setTimeout(function(){
+        setTimeout(function(){
             $('.fundo_popup_select').remove()
-        },400)*/
+        },400)
     })
 
     $('.container_select_investimento').click(function(e){
@@ -257,6 +257,7 @@ $('#btn_retirar_investimento').click(function(){
         popUpTransacao()
         atualizarSaldo(saldoConta)
         atualizarSaldoInvestimento(dinheiroInvestidoTotal)
+        olhoMostrarSaldo()
         disableButtonTransacao($('.btn_input'))
 
         // animacao
