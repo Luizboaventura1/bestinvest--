@@ -53,7 +53,7 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 
 
 
-mostrarAplicacoes = () => {
+function mostrarAplicacoes () {
     $('.wraper_tabela').html('')
     let i = 0
     let id = 0
@@ -127,4 +127,9 @@ setInterval(function(){
     mostrarAplicacoes()
     valorTotalAplicacoes()
     olhoMostrarSaldo()
-},100)
+    $(`.row_box span:nth-of-type(1)`).addClass('cor_rendimento')
+    setTimeout(function(){
+        $(`.row_box span:nth-of-type(1)`).removeClass('cor_rendimento')
+    },3000)
+},9000)
+

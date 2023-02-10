@@ -1162,6 +1162,10 @@ footer {
     display: none;
 }
 
+.cor_rendimento {
+    color: rgb(12, 170, 12);
+}
+
 
 /* Graficos */
 
