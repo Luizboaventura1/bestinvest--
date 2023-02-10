@@ -111,3 +111,20 @@ function valorTotalAplicacoes() {
 
 valorTotalAplicacoes()
 olhoMostrarSaldo()
+
+
+
+
+function renderAplicacoes () {
+    for(let i = 0;i < listaAplicacoes.length;i++){
+        listaAplicacoes[i].valorAplicado = listaAplicacoes[i].valorAplicado + ((listaAplicacoes[i].rentabilidade * listaAplicacoes[i].valorAplicado) / 100)
+    }
+    localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
+}
+
+setInterval(function(){
+    renderAplicacoes()
+    mostrarAplicacoes()
+    valorTotalAplicacoes()
+    olhoMostrarSaldo()
+},100)

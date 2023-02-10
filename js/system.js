@@ -317,4 +317,10 @@ function formatTotal(valorFormatar) {
     else if(valorFormatar[0] < 1000000){
         return valorFormatar[0][0]+valorFormatar[0][1]+valorFormatar[0][2]+','+valorFormatar[0].substr(3,valorFormatar[0].length)+','+valorFormatar[1]
     }
+    else if(valorFormatar[0] < 10000000){
+        return valorFormatar[0][0]+','+valorFormatar[0][1]+valorFormatar[0][2]+valorFormatar[0][3]+','+valorFormatar[0].substr(4,valorFormatar[0].length)+','+valorFormatar[1]
+    }
+    else if(valorFormatar[0] < 100000000){
+        return valorFormatar[0][0]+valorFormatar[0][1]+','+valorFormatar[0][2]+valorFormatar[0][3]+valorFormatar[0][4]+','+valorFormatar[0].substr(5,valorFormatar[0].length)+','+valorFormatar[1]
+    }
 }

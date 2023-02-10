@@ -1018,6 +1018,7 @@ footer {
     width: 100%;
     max-width: 800px;
     overflow-y: auto;
+    border-radius: 5px;
 }
 
 .wraper_tabela::-webkit-scrollbar {
