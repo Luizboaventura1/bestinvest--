@@ -30,9 +30,16 @@ $('#cadastro').click(function(){
     else if(gmailLista != gmail){
         contaList.push(user)
         localStorage.setItem('contaList',JSON.stringify(contaList))
+        location.href = '../bestinvest.html'
+
+        tokenConta = 'token'
+        localStorage.setItem('tokenConta',JSON.stringify(tokenConta))
     }else if(gmailLista == '' && gmail != '') {
         contaList.push(user)
         localStorage.setItem('contaList',JSON.stringify(contaList))
+        location.href = '../bestinvest.html'
+
+        localStorage.setItem('tokenConta',JSON.stringify(tokenConta))
     }
 })
 
@@ -51,7 +58,7 @@ $('#login').click(function(){
     }
 
     if(gmailLista.gmail == gmail){
-        alert('Logado')
+        location.href = '../bestinvest.html'
     }
 })
 
@@ -62,6 +69,6 @@ $("#button_investir").click(function(){
     if(tokenConta == ''){
         alert('Crie uma conta')
     }else {
-        location.href = 'https://www.google.com'
+        location.href = '../bestinvest.html'
     }
 })

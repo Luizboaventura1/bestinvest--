@@ -4,104 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plataforma de simulação de investimentos.">
-    <meta name="keywords" content="investimentos,financas,investir">
     <title>BestInvest</title>
 
-    <!-- CSS do Site -->
-    <link rel="stylesheet" href="./CSS/style.css">
-    <link rel="stylesheet" href="./CSS/media-queries.css">
+    <link rel="shortcut icon" href="login/img/favicon-logo.png" type="image/x-icon">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon-logo.png" type="image/x-icon">
+    <!-- CSS -->
+    <link rel="stylesheet" href="login/CSS/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <!-- JS -->
     <script src="js/jquery-3.6.2.min.js" defer></script>
-    <script src="js/system.js" defer></script>
-    <script src="js/criptomoedas.js" defer></script>
-    <script src="js/cotacoes/cotacao-moedas.js" defer></script>
-    <script src="js/investir.js" defer></script>
-    <script src="js/investimentos-system/rendimento-bolsa.js" defer></script>
-    <script src="js/cotacoes/cotacao-bolsa-de-valores.js" defer></script>
-    <script src="js/extrato-user.js" defer></script>
-    <script src="js/investimentos-system/graficos/graficos.js" defer></script>
+    <script src="login/login-user.js" defer></script>
+    <script src="login/menu.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </head>
 <body>
-    <header>
-        <nav class="navbar_principal">
-            <div class="centralizar_logo">
-                <img class="logo_do_site" src="images/img-logo-site.png" alt="Logo do site">
-            </div>
-            <div class="menu_desktop">
-                <ul>
-                    <li><a href="index.html">Home</a><hr></li>
-                    <li><a href="investir/investir.html">Investir</a><hr></li>
-                    <li><a href="criptomoedas/criptomoedas.html">Criptomoedas</a><hr></li>
-                    <li><a href="conta/conta-user.html">Conta</a><hr></li>
-                </ul>
-            </div><!--menu_desktop-->
-            <div class="menu_mobile">
-                <ul>
-                    <a href="index.html"><li>Home</li></a>
-                    <a href="investir/investir.html"><li>Investir</li></a>
-                    <a href="criptomoedas/criptomoedas.html"><li>Criptomoedas</li></a>
-                    <a href="conta/conta-user.html"><li>Conta</li></a>
-                </ul>
-                <div class="menu_burguer">
-                    <svg id="menu_open" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
-                    
-                    <svg id="menu_close" class="close" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
-                </div>
-            </div><!--menu_mobile-->
-        </nav><!--navbar_principal-->
-    </header><!--header-->
-    <div class="div_saldo_usuario">
-        <h1 class="titulo_saldo">
-            Saldo Atual
-        </h1>
-        <div class="wraper_saldo">
-            <div class="saldo_atual">
-                <!-- Saldo Atual -->
-                <span class="open-span"></span>
-            </div>
-            <div class="olho_box">
-                <svg id="eye_open" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 511.999 511.999" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M508.745 246.041c-4.574-6.257-113.557-153.206-252.748-153.206S7.818 239.784 3.249 246.035a16.896 16.896 0 0 0 0 19.923c4.569 6.257 113.557 153.206 252.748 153.206s248.174-146.95 252.748-153.201a16.875 16.875 0 0 0 0-19.922zM255.997 385.406c-102.529 0-191.33-97.533-217.617-129.418 26.253-31.913 114.868-129.395 217.617-129.395 102.524 0 191.319 97.516 217.617 129.418-26.253 31.912-114.868 129.395-217.617 129.395z"></path><path d="M255.997 154.725c-55.842 0-101.275 45.433-101.275 101.275s45.433 101.275 101.275 101.275S357.272 311.842 357.272 256s-45.433-101.275-101.275-101.275zm0 168.791c-37.23 0-67.516-30.287-67.516-67.516s30.287-67.516 67.516-67.516 67.516 30.287 67.516 67.516-30.286 67.516-67.516 67.516z"></path></g></svg>
-
-                <svg id="eye_closed" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"><g><path fill-rule="evenodd" d="M2.561 11.102a1 1 0 0 1 1.337.46 10.66 10.66 0 0 0 1.48 2.26 9.397 9.397 0 0 0 2.759 2.216 1.012 1.012 0 0 1 .17.087A8.273 8.273 0 0 0 12 17c1.305 0 2.555-.31 3.693-.874a1.04 1.04 0 0 1 .17-.088 9.4 9.4 0 0 0 2.838-2.31 10.661 10.661 0 0 0 1.401-2.166 1 1 0 0 1 1.797.878 12.756 12.756 0 0 1-1.143 1.902l1.451 1.45a1 1 0 1 1-1.414 1.415l-1.345-1.345a11.406 11.406 0 0 1-1.897 1.51l.843 1.68a1 1 0 1 1-1.788.896l-.836-1.668c-.876.347-1.804.577-2.77.671V21a1 1 0 1 1-2 0V18.95a10.213 10.213 0 0 1-2.77-.67l-.836 1.667a1 1 0 0 1-1.788-.896l.843-1.68a11.41 11.41 0 0 1-1.897-1.51l-1.345 1.345a1 1 0 1 1-1.414-1.414l1.45-1.451a12.754 12.754 0 0 1-1.142-1.903 1 1 0 0 1 .46-1.337z" clip-rule="evenodd" data-original="#000000"></path></g></svg>
-            </div>
-        </div>
-        <div class="extrato">
-            <button class="btn_extrato" id="button_extrato">Ver extrato</button>
-        </div>
-    </div><!--div_saldo_usuario-->
-    <main class="container_carteira">
-        <div class="carteira">
-            <div class="opcao_carteira">
-                <a href="investir/investir.html">Investir
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" x="0" y="0" viewBox="0 0 492.004 492.004" style="enable-background:new 0 0 512 512" xml:space="preserve" class=""><g><path d="M382.678 226.804 163.73 7.86C158.666 2.792 151.906 0 144.698 0s-13.968 2.792-19.032 7.86l-16.124 16.12c-10.492 10.504-10.492 27.576 0 38.064L293.398 245.9l-184.06 184.06c-5.064 5.068-7.86 11.824-7.86 19.028 0 7.212 2.796 13.968 7.86 19.04l16.124 16.116c5.068 5.068 11.824 7.86 19.032 7.86s13.968-2.792 19.032-7.86L382.678 265c5.076-5.084 7.864-11.872 7.848-19.088.016-7.244-2.772-14.028-7.848-19.108z" data-original="#000000" class=""></path></g></svg>
+    <main class="container_principal pb-5">
+        <nav class="nav_principal navbar navbar-expand-lg py-4 px-3">
+            <div class="container">
+    
+                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <img class="logo-img" src="login/img/img-logo-site.png" alt="Logo BestInvest">
                 </a>
-            </div><!--opcao_carteira-->
-            <div class="dinheiro_carteira">
-                <p class="dinheiro_investido_usuario">
-                    <!-- Dinheiro Investido -->
-                    <span class="open-span"></span>
-                </p>
-            </div><!--dinheiro_carteira-->
-        </div><!--carteira-->
-    </main><!--container_carteira-->
-    <div class="section_cripto">
-        <!-- Cotações -->
-        
-    </div>
-    <footer>
-        <div class="bloco_footer">
-            <p class="info_site_footer">
-                Todos os direitos reservados
-                &copy;  BestInvest - 2023
-            </p><!--info_site_footer-->
-        </div><!--bloco_footer-->
-    </footer><!--footer-->
-    <div class="popup"></div>
+    
+                <div class="container_menu">
+    
+                    <div class="menu_burguer">
+                        <svg id="menu_open" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>
+                        
+                        <svg id="menu_close" class="close" xmlns="http://www.w3.org/2000/svg" height="36px" viewBox="0 0 24 24" width="36px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+                    </div>
+    
+                    <div class="menu_desktop">
+                        <ul>
+                            <li class="nav-item px-2">
+                                <a href="index.html" class="nav-link text-light fw-bold ">Home</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a href="login/login.html" class="nav-link text-light fw-bold ">Login</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a href="login/cadastro.html" class="nav-link text-light fw-bold ">Cadastrar</a>
+                            </li>
+                        </ul>
+                    </div><!--menu_desktop-->
+                    <div class="menu_mobile">
+                        <ul>
+                            <li class="nav-item px-2 py-3">
+                                <a href="index.html" class="nav-link text-dark fw-bold ">Home</a>
+                            </li>
+                            <li class="nav-item py-3 px-2">
+                                <a href="login/login.html" class="nav-link text-dark fw-bold ">Login</a>
+                            </li>
+                            <li class="nav-item py-3 px-2">
+                                <a href="login/cadastro.html" class="nav-link text-dark fw-bold ">Cadastrar</a>
+                            </li>
+                        </ul>
+                    </div><!--menu_mobile-->
+                </div>
+            </div><!--container-->
+        </nav><!--navbar-->
+        <div class="container px-5 pt-5">
+            <h1 class="text-light fw-bold pb-3 pt-5">A melhor plataforma <br> de simulação de <br> investimentos</h1>
+            <p class="pb-3">Aprenda a investir da melhor forma <br> com nossa plataforma completa</p>
+            <button type="button" id="button_investir">Investir</button>
+        </div>
+    </main>
 </body>
 </html>
