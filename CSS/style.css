@@ -42,7 +42,9 @@ body {
 
 
 .logo_do_site {
+    padding-top: 7px;
     width: 100%;
+    height: auto;
     max-width: 250px;
     min-width: 150px;
 }
