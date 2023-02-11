@@ -1,10 +1,4 @@
-/*
-1 - Pegar o valor para investir
-2 - Adicionar o valor em fundo
-3 - comecar a render
-4 - opcao de pegar o investimento
 
-*/
 
 //  Render investimentos do usuario
 
@@ -113,8 +107,6 @@ valorTotalAplicacoes()
 olhoMostrarSaldo()
 
 
-
-
 function renderAplicacoes () {
     for(let i = 0;i < listaAplicacoes.length;i++){
         listaAplicacoes[i].valorAplicado = listaAplicacoes[i].valorAplicado + ((listaAplicacoes[i].rentabilidade * listaAplicacoes[i].valorAplicado) / 100)
@@ -131,5 +123,5 @@ setInterval(function(){
     setTimeout(function(){
         $(`.row_box span:nth-of-type(1)`).removeClass('cor_rendimento')
     },3000)
-},9000)
+},900000)
 

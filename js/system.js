@@ -295,6 +295,7 @@ $('.menu_burguer').click(function(){
 
 
 // Formatar preco
+
 function formatPreco(valorAtual) {
     valorAtual = parseFloat(valorAtual).toFixed(2)
     valorFormatar = valorAtual.split('.')
@@ -323,4 +324,11 @@ function formatTotal(valorFormatar) {
     else if(valorFormatar[0] < 100000000){
         return valorFormatar[0][0]+valorFormatar[0][1]+','+valorFormatar[0][2]+valorFormatar[0][3]+valorFormatar[0][4]+','+valorFormatar[0].substr(5,valorFormatar[0].length)+','+valorFormatar[1]
     }
+}
+
+
+
+function formatValorInput() {
+    let valInput = $('#retirar_dinheiro').val()
+    valInput.text(formatPreco(parseFloat(valInput)))
 }

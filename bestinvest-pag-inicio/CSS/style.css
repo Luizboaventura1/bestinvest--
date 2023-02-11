@@ -1,0 +1,194 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+body {
+    background-image: linear-gradient(to right, rgb(235, 235, 236), rgb(208, 208, 220));
+}
+
+html,body {
+    height: 100%;
+}
+
+/* Navbar */
+
+.nav_principal {
+    background-color: #16171e;
+}
+
+.logo-img {
+    width: 100%;
+    max-width: 230px;
+}
+
+.menu_desktop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10px;
+}
+
+.menu_desktop ul {
+    display: contents;
+}
+
+.menu_mobile {
+    display: none;
+}
+
+.menu_burguer {
+    display: none;
+    height: 30px;
+}
+
+#menu_open {
+    display: block;
+}
+
+#menu_close {
+    display: none;
+}
+
+.container_menu {
+    display: flex;
+}
+
+@media screen and (max-width: 768px) {
+    .menu_desktop {
+        display: none;
+    }
+
+    .menu_mobile {
+        display: block;
+    }
+
+    .menu_mobile ul {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 78px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        list-style: none;
+    }
+
+    .menu_burguer {
+        display: block;
+    }
+
+    .menu_burguer svg {
+        cursor: pointer;
+    }
+
+    .logo-img {
+        max-width: 150px;
+    }
+
+}
+
+
+
+/* Container Principal */
+
+
+.container_principal {
+    background-color: rgb(13, 13, 18);
+    height: 100%;
+}
+
+.container_principal h1 {
+    font-size: 50px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(to top right,rgb(255, 179, 0),30%,rgb(255, 123, 0));
+}
+
+.container_principal p {
+    color: #ffffff;
+}
+
+#button_investir {
+    border: none;
+    padding: 10px 35px;
+    background-color: rgb(255, 128, 0);
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+    transition: .3s;
+}
+
+#button_investir:hover {
+    background-color: rgb(213, 107, 0);
+}
+
+/* Container Login */
+
+.container_login {
+    text-align: center;
+}
+
+.container_login form {
+    width: 100%;
+    max-width: 350px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.179);
+    border-radius: 10px;
+    height: 500px;
+}
+
+.container_login form input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    outline: none;
+    transition: .3s;
+}
+
+.container_login form input:focus {
+    border-bottom: 1px solid rgb(0, 153, 255);
+}
+
+
+.container_login h1 {
+    text-align: center;
+}
+
+#login,#cadastro {
+    border: 2px solid rgb(0, 153, 255);
+    background-color: transparent;
+    border-radius: 5px;
+    transition: .4s;
+    color: rgb(0, 153, 255);
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 20px;
+}
+
+#login:hover,#cadastro:hover {
+    background-color: rgb(0, 153, 255);
+    color: white;
+}
+
+.container_login a {
+    color: #868686;
+    text-decoration: none;
+}
+
+.container_login a:hover {
+    color: rgb(76, 76, 76);
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+    .container_principal h1 {
+        font-size: 42px;
+    }
+}

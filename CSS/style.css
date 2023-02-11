@@ -212,14 +212,16 @@ body {
     margin: auto;
     margin-top: 30px;
     box-shadow: 0px 0px 10px #00000063;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dinheiro_investido_usuario {
     display: flex;
-    padding: 53px;
     font-family: 'Montserrat', sans-serif;
     color: white;
-    font-size: 25px;
+    font-size: 23px;
     justify-content: center;
     align-items: center;
     transition: .5s;
@@ -400,11 +402,11 @@ body {
     font-family: 'Montserrat',sans-serif;
     font-weight: bold;
     padding-left: 30px;
-    width: 100%;
+    width: 60%;
 }
 
 .valor_transferencia {
-    width: 30%;
+    width: 40%;
     font-family: 'Montserrat',sans-serif;
     font-weight: bold;
     color: rgb(0, 205, 0);
