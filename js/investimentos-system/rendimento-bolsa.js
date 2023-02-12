@@ -123,5 +123,12 @@ setInterval(function(){
     setTimeout(function(){
         $(`.row_box span:nth-of-type(1)`).removeClass('cor_rendimento')
     },3000)
-},900000)
+},9000)
 
+
+
+// Opcao de retirar a aplicacao que escolher
+
+$('#opcaoRetirarAplicacao').click(function(){
+    
+})

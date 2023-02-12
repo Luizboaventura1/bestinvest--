@@ -327,8 +327,9 @@ function formatTotal(valorFormatar) {
 }
 
 
+// Ano atual
 
-function formatValorInput() {
-    let valInput = $('#retirar_dinheiro').val()
-    valInput.text(formatPreco(parseFloat(valInput)))
-}
+let data = new Date()
+let ano = data.getFullYear()
+
+$('#anoAtual').append(ano)

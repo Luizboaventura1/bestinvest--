@@ -33,7 +33,7 @@ const rendaFixa = [
     {
         nome:'LCI Dl LIQUIDEZ 90 DIAS',
         investimentoMinimo: 50,
-        rentabilidade: 89,
+        rentabilidade: 9,
         grauRiscoNome: 'Muito baixo',
         grauRisco: 'risco_muitobaixo',
         historicoRentabilidade: [45,12,78,44,60,89],
