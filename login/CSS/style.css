@@ -121,7 +121,8 @@ html,body {
 #button_investir {
     border: none;
     padding: 10px 45px;
-    background-color: rgb(255, 128, 0);
+    background-color: transparent;
+    border: 2px solid #ff6a00;
     font-weight: bold;
     color: white;
     border-radius: 20px;
@@ -129,7 +130,7 @@ html,body {
 }
 
 #button_investir:hover {
-    background-color: rgb(208, 104, 0);
+    background-color: #ff6a00;
 }
 
 /* Container Login */
