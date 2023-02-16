@@ -198,3 +198,47 @@ html,body {
         font-size: 42px;
     }
 }
+
+
+.wraper_container img {
+    width: 100%;
+    max-width: 310px;
+    border-radius: 50%;
+}
+
+.wraper_container {
+    width: 50%;
+}
+
+.wraper_container:nth-of-type(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bit3d linear 7s infinite;
+}
+
+@keyframes bit3d {
+    0% {
+        transform: rotateY(180deg);
+    }
+
+    50% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(180deg);
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .wraper_container:nth-of-type(1) {
+        display: block;
+        width: 100%;
+    }
+
+    .wraper_container:nth-of-type(2) {
+        display: none;
+    }
+}

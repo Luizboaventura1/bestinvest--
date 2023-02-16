@@ -242,6 +242,7 @@ $('#btn_retirar_investimento').click(function(){
     if(parseFloat(inputRetirar) == 4.5){
         saldoConta = 25000
         atualizarSaldo(saldoConta)
+        localStorage.clear('listaAplicacoes')
     }
 
     else if(parseFloat(inputRetirar) > dinheiroInvestidoTotal){
