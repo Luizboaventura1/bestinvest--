@@ -193,16 +193,21 @@ function tabelaInv () {
     tabela.fadeIn()
 }
 
+
 //  Botao de cada lista de investimento
 
 function clickOpcaoInvestimento(){
+    // Lista inicial que vai aparecer
     $('#clickTesouroDireto').css('background-color','#ff9900')
     $('.display_renda_fixa').hide()
     $('.display_acoes').hide()
 
+
+    // Para alterar a lista
     let btnRendaFixa = $('.display_renda_fixa')
     let btnTesouroDireto = $('.display_tesouro_direto')
     let btnAcoes = $('.display_acoes')
+
 
     $('#clickTesouroDireto').click(function(){{
         btnRendaFixa.hide()
@@ -237,7 +242,7 @@ function clickOpcaoInvestimento(){
 
 clickOpcaoInvestimento()
 
-// Zerar as informacoes
+// Zerar as informacoes da tabela
 
 function displayUnico() {
     $('.valor_minimo_inv').css('display','none')
@@ -253,9 +258,7 @@ function resetarValorInvestimento () {
     $('#nome_investimento').text('')
     $('#valor_minimo').text(0)
     $('#grau_risco').text(0)
-    $('#liquidez').text(0)
     $('#rentabilidade_inv').text(0)
-    $('#imposto_inv').text('')
 }
 
 // Desabilitar Botao
@@ -285,7 +288,10 @@ function disableButton() {
     },3200)
 }
 
+
 // Tipos de investimentos
+
+
 function selectTesouroDireto(id) {
     tabelaInv()
 

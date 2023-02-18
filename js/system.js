@@ -5,7 +5,8 @@ let dinheiroInvestidoTotal = localStorage.getItem('dinheiroInvestido')
 // Saldo da conta
 let saldoConta = localStorage.getItem('saldoConta')
 
-let coinValue = 25000
+
+let coinValue = 25000// já comeca com um saldo inicial
 
 // Mostrar saldo da conta
 
@@ -324,6 +325,8 @@ function formatTotal(valorFormatar) {
     }
     else if(valorFormatar[0] < 100000000){
         return valorFormatar[0][0]+valorFormatar[0][1]+','+valorFormatar[0][2]+valorFormatar[0][3]+valorFormatar[0][4]+','+valorFormatar[0].substr(5,valorFormatar[0].length)+','+valorFormatar[1]
+    }else {
+        return parseFloat(valorFormatar).toFixed(2).replace('.',',')
     }
 }
 
