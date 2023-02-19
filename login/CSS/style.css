@@ -155,12 +155,12 @@ html,body {
 }
 
 .wraper_container {
-    background-color: #d7d7d7;
+    background-color: #f0f1f3;
     border-radius: 0 20px 20px 0;
     width: 100%;
     max-width: 800px;
     padding: 0 20px 0 9%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.274);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.423);
 }
 
 

@@ -116,7 +116,6 @@ function renderAplicacoes () {
 
 setInterval(function(){
     renderAplicacoes()
-    mostrarAplicacoes()
     valorTotalAplicacoes()
     olhoMostrarSaldo()
     $(`.row_box span:nth-of-type(1)`).addClass('cor_rendimento')
