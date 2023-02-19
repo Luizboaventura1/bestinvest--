@@ -226,6 +226,23 @@ html,body {
     text-decoration: underline;
 }
 
+.popup_aviso_form {
+    width: 100%;
+    max-width: 220px;
+    height: 60px;
+    border-bottom: 5px;
+    background-color: white;
+    box-shadow: 0 0 17px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: red;
+    font-weight: bold;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
 @media screen and (max-width: 600px) {
 
     .container_principal h1 {

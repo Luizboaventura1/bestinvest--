@@ -5,6 +5,7 @@ let tokenConta = localStorage.getItem('tokenConta') ? localStorage.getItem('toke
 
 
 $('#cadastro').click(function(){
+
     let nome = $('#inputCadastroNome').val()
     let gmail = $("#inputCadastroEmail").val()
     let senha = $('#inputCadastroSenha').val()
@@ -25,16 +26,16 @@ $('#cadastro').click(function(){
     }
 
     if(gmailLista.gmail == gmail){
-        return false
+        avisoForm('Email existente!')
     }
-    else if(gmailLista != gmail){
+    else if(gmailLista != gmail && nome != '' && senha != ''){
         contaList.push(user)
         localStorage.setItem('contaList',JSON.stringify(contaList))
         location.href = '../bestinvest.html'
 
         tokenConta = 'token'
         localStorage.setItem('tokenConta',JSON.stringify(tokenConta))
-    }else if(gmailLista == '' && gmail != '') {
+    }else if(gmailLista == '' && gmail != '' && nome != '' && senha != '') {
         contaList.push(user)
         localStorage.setItem('contaList',JSON.stringify(contaList))
         location.href = '../bestinvest.html'
@@ -46,19 +47,36 @@ $('#cadastro').click(function(){
 
 $('#login').click(function(){
     let gmail = $("#inputLoginEmail").val()
+    let senha = $('#inputLoginSenha').val()
 
     let gmailLista
+    let senhaLista
 
+    // Pegar gmail e senha da lista
     if(contaList.length == 0){
         gmailLista = ''
+        senhaLista = ''
     }else {
         gmailLista = contaList.find(function(gmail){
             return gmail === gmail
         })
+        senhaLista = contaList.find(function(senha){
+            return senha === senha
+        })
     }
 
-    if(gmailLista.gmail == gmail){
+    // Verificação
+    if(gmailLista.gmail == gmail && senhaLista.senha == senha){
         location.href = '../bestinvest.html'
+    }
+    else if(gmail == '' && senha == '') {
+        avisoForm('Campo vazio!')
+    }
+    else if(gmailLista.gmail != gmail || senhaLista.senha != senha){
+        avisoForm('Campo inválido!')
+    }
+    else if(gmailLista.gmail != gmail && senhaLista.senha == senha) {
+        avisoForm('Informações inválidas!')
     }
 })
 
@@ -72,3 +90,23 @@ $("#button_investir").click(function(){
         location.href = '../bestinvest.html'
     }
 })
+
+
+function avisoForm (msg) {
+   $('.popup_aviso_form').remove()
+
+
+    let aviso = $(`
+    <div class="popup_aviso_form">
+        <span>${msg}</span>
+    </div>`)
+
+    aviso.hide()
+    $("body").append(aviso)
+    aviso.stop().fadeIn()
+
+    setTimeout(function(){
+        aviso.stop().fadeOut(200)
+        setTimeout(function(){aviso.remove()},500)
+    },3000)
+}
