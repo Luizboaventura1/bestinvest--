@@ -31,28 +31,6 @@
         padding-left: 20px;
     }
 
-    .carteira {
-        width: 100%;
-        max-width: 400px;
-        height: 250px;
-        background-color: var(--cor1);
-        border-radius: 10px;
-        box-shadow: 0 0 7px rgba(0, 0, 0, 0.436);
-        margin: 15px 0;
-    }
-
-    .dinheiro_carteira {
-        width: 100%;
-        max-width: 250px;
-        height: 125px;
-        border-radius: 10px;
-        background-image: linear-gradient(to right ,#2e2f3e, #3f4155);
-        margin: 10px auto;
-        box-shadow: 0px 0px 10px #00000063;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }
 
 @media screen and (max-width: 768px) {

@@ -68,9 +68,18 @@ function mostrarAplicacoes () {
         <div class="fundo_investido_usuario">
             <div class="investido_aplicacao">
                 <div class="row_box">
-                    <div><span>R$ ${formatPreco(value.valorAplicado)}</span></div>
-                    <div><span>${formatPreco(value.rentabilidade)}%</span></div>
-                    <div><span>${value.nomeAplicacao}</span></div>
+                    <div class="col_box">
+                        <div>Val. aplicado</div>
+                        <span>R$ ${formatPreco(value.valorAplicado)}</span>
+                    </div>
+                    <div class="col_box">
+                        <div>Rentabilidade</div>
+                        <span>${formatPreco(value.rentabilidade)}%</span>
+                    </div>
+                    <div class="col_box">
+                        <div>Nome aplicação</div>
+                        <span>${value.nomeAplicacao}</span>
+                    </div>
                 </div>
                 <div class="row_box" onclick="btnArrow(id='${i++}')">
                     <div class="arrow_display">

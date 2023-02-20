@@ -29,8 +29,7 @@ html,body {
 }
 
 .btn_dashboard {
-    width: 100%;
-    padding: 15px;
+    padding: 20px 0 20px 20px;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -41,7 +40,7 @@ html,body {
     height: 30px;
     transition: .3s;
     cursor: pointer;
-    fill: white;
+    fill: rgb(86, 86, 86);
 }
 
 .btn_dashboard svg:hover {
@@ -135,12 +134,9 @@ html,body {
         position: absolute;
         left: 0;
         top: 60px;
-        min-width: 50px;
-        width: 50px;
-    }
-
-    .container_principal_conteudo {
-        margin-left: 50px;
+        min-width: 0px;
+        width: 0px;
+        z-index: 999;
     }
 
     .user_container {
