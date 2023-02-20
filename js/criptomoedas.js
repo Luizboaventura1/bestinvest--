@@ -37,7 +37,7 @@ $(function(){
     ]
 
     //Para achar a pasta
-    let pastaCriptoLocal = 'js/images-cripto/'
+    let pastaCriptoLocal = '../js/images-cripto/'
 
     criptoDinamico = () => {
         criptoMoedas.map((value)=> {
@@ -45,7 +45,7 @@ $(function(){
             <div class="container_cripto_single">
                 <div class="bloco_wraper_cripto">
                     <div class="logo_cripto">
-                        <img src="${pastaCriptoLocal}${value.imagem}" alt="Logo">
+                        <img src="${pastaCriptoLocal+value.imagem}" alt="Logo">
                     </div>
                     <div class="bloco_cripto">
                         <h1 class="nome_cripto_moeda">${value.nome}</h1>

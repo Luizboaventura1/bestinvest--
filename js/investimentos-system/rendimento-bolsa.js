@@ -8,6 +8,12 @@
 
 let listaAplicacoes = JSON.parse(localStorage.getItem('listaAplicacoes')) ? JSON.parse(localStorage.getItem('listaAplicacoes')) : []
 
+if(listaAplicacoes.length == 0) {
+    $('#aviso_aplicacao_id').text('Nenhuma aplicação!')
+}else {
+    $('#aviso_aplicacao_id').remove()
+}
+
 
 function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 
@@ -25,8 +31,11 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 
         listaAplicacoes.map((valor) => {
             if(valor.nomeAplicacao == nomeAplicacao)
+            //Somar um valor novo aplicado
             return valor.valorAplicado += valorAplicado
-            else{localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))}
+            else{
+                localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
+            }
 
         })
 
@@ -59,9 +68,9 @@ function mostrarAplicacoes () {
         <div class="fundo_investido_usuario">
             <div class="investido_aplicacao">
                 <div class="row_box">
-                    <span>R$ ${formatPreco(value.valorAplicado)}</span>
-                    <span>${formatPreco(value.rentabilidade)}%</span>
-                    <span>${value.nomeAplicacao}</span>
+                    <div><span>R$ ${formatPreco(value.valorAplicado)}</span></div>
+                    <div><span>${formatPreco(value.rentabilidade)}%</span></div>
+                    <div><span>${value.nomeAplicacao}</span></div>
                 </div>
                 <div class="row_box" onclick="btnArrow(id='${i++}')">
                     <div class="arrow_display">

@@ -13,14 +13,14 @@ html,body {
 .container_principal_dashboard {
     display: flex;
     width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100% - 60px);
 }
 
 .dashboard {
     min-width: 250px;
     width: 250px;
     height: 100%;
-    background-color: #0f0f0f;
+    background-color: #16171e;
     transition: .3s;
 }
 
@@ -131,13 +131,28 @@ html,body {
 
 @media screen and (max-width: 768px) {
     .dashboard {
-        height: calc(100% - 100px);
+        height: calc(100% - 60px);
         position: absolute;
         left: 0;
-        top: 100px;
+        top: 60px;
+        min-width: 50px;
+        width: 50px;
     }
 
     .container_principal_conteudo {
         margin-left: 50px;
+    }
+
+    .user_container {
+        display: none;
+        width: 100%;
+        height: 100px;
+        padding: 10px 1% 10px 10%;
+        justify-content: left;
+        align-items: center;
+    }
+
+    .container_controle {
+        display: none;
     }
 }

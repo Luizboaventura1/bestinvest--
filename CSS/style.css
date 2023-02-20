@@ -43,91 +43,24 @@ body {
 
 .logo_do_site {
     padding-top: 7px;
-    width: 100%;
+    width: 150px;
     height: auto;
-    max-width: 250px;
-    min-width: 150px;
 }
 
 .navbar_principal {
     width: 100%;
     background-color: #16171e;
     display: flex;
-    height: 100px;
+    height: 60px;
 }
 
 .centralizar_logo {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     width: 30%;
     padding-left: 5%;
 }
-
-.menu_burguer {
-    display: none;
-    width: 35px;
-    height: 30px;
-}
-
-.menu_burguer img {
-    width: 100%;
-}
-
-.menu_desktop {
-    width: 70%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    padding-right: 5%;
-}
-
-.menu_desktop ul {
-    display: flex;
-    list-style-type: none;
-}
-
-.menu_desktop li {
-    padding: 20px 20px 10px 20px;
-}
-
-.menu_desktop a {
-    text-decoration: none;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
-    font-weight: bold;
-}
-
-.menu_desktop hr {
-    width: 0%;
-    height: 3px;
-    background-color: rgb(255, 136, 0);
-    border: none;
-    transition: .4s;
-    margin-top: 4px;
-}
-
-.menu_desktop li:hover hr {
-    width: 98%;
-}
-
-.menu_mobile {
-    display: none;
-}
-
-.menu_mobile ul{
-    display: none;
-}
-
-#menu_open {
-    display: block;
-}
-
-#menu_close {
-    display: none;
-}
-
-
 /* carteira do usuário */
 
 
@@ -1018,11 +951,10 @@ footer {
 }
 
 .wraper_tabela {
-    max-height: 300px;
     width: 100%;
-    max-width: 800px;
-    overflow-y: auto;
     border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .wraper_tabela::-webkit-scrollbar {
@@ -1046,29 +978,35 @@ footer {
     width: 100%;
     background-color: white;
     padding: 5px 0;
-    margin: 10px 0;
+    margin: 10px 15px;
+    height: 100%;
+    min-height: 175px;
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 350px;
 }
 
 .investido_aplicacao {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
 }
 
 .investido_aplicacao .row_box:nth-of-type(1) {
     width: 90%;
     height: 100%;
+    min-height: 175px;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px 0;
+    flex-wrap: wrap;
+    align-items: baseline;
 }
 
 .investido_aplicacao .row_box:nth-of-type(2) {
     width: 10%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
 }
 
 .investido_aplicacao  span {
@@ -1077,8 +1015,17 @@ footer {
     font-size: 15px;
 }
 
+.row_box:nth-of-type(1) > div {
+    width: 100%;
+    min-height: 60px;
+    padding-left:4%;
+    display: flex;
+    align-items: center;
+}
+
 .info_investimento_user {
     display: none;
+    width: 100%;
 }
 
 .button_wraper {
@@ -1126,6 +1073,8 @@ footer {
     height: 20px;
     cursor: pointer;
     rotate: 0deg;
+    display: flex;
+    align-items: center;
 }
 
 .arrow_display img {
@@ -1136,6 +1085,7 @@ footer {
 .container_movimentar_dinheiro {
     padding: 5px 2%;
     display: none;
+    width: 100%;
 }
 
 .container_movimentar_dinheiro input {
@@ -1168,6 +1118,14 @@ footer {
 
 .cor_rendimento {
     color: rgb(12, 170, 12);
+}
+
+#aviso_aplicacao_id {
+    margin: 50px auto;
+    font-weight: bold;
+    width: 200px;
+    height: 200px;
+    text-align: center;
 }
 
 
