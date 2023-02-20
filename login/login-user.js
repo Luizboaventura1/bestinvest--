@@ -110,10 +110,10 @@ function avisoForm (msg) {
 
     aviso.hide()
     $("body").append(aviso)
-    aviso.stop().fadeIn()
+    aviso.stop().slideToggle(500)
 
     setTimeout(function(){
-        aviso.stop().fadeOut(200)
+        aviso.stop().slideToggle()
         setTimeout(function(){aviso.remove()},500)
     },3000)
 }

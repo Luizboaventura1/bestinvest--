@@ -56,6 +56,11 @@ function olhoMostrarSaldo() {
 
         olhoClosed.fadeIn(200).css('display','block')
         olhoOpen.fadeOut(200).css('display','none')
+    }else {
+        totalSaldo()
+        totalInvestido()
+        olhoClosed.fadeOut(200).css('display','none')
+        olhoOpen.fadeIn(200).css('display','block')
     }
 
     $('#eye_open').click(function(){
