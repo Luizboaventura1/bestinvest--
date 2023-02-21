@@ -400,7 +400,10 @@ function selectRendaFixa(id) {
         else if(valorInput == 0){
             popUpTransacaoErro()
             disableButton()
-
+        }
+        else if(parseFloat(valorInput) > parseFloat(saldoConta)) {
+            popUpTransacaoErro()
+            disableButton()
         }
 
     })
@@ -454,7 +457,10 @@ function selectAcoes(id) {
         else if(valorInput == 0){
             popUpTransacaoErro()
             disableButton()
-
+        }
+        else if(parseFloat(valorInput) > parseFloat(saldoConta)) {
+            popUpTransacaoErro()
+            disableButton()
         }
     })
 }

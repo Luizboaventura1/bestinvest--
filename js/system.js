@@ -144,27 +144,26 @@ function popUpTransacaoErro(){
     $('.container_popup_erro').remove()
 
 
-    setTimeout(function(){
-        $('body').fadeIn(function(){
-            $('body').append(`
-            <div class="container_popup_erro">
-                <div class="bloco_popup">
-                    <h1>Saldo insuficiente!</h1>
-                </div>
-                <div class="barra_popup"></div>
-            </div>`)
-        })
-        $('.barra_popup').animate({
-            'width': '100%'
-        },3200)
-    },500)
+    let popup = $(`
+    <div class="container_popup_erro">
+        <div class="bloco_popup">
+            <h1>Saldo insuficiente!</h1>
+        </div>
+        <div class="barra_popup"></div>
+    </div>`)
+
+    popup.hide()
+    $('body').append(popup)
+    popup.stop().fadeIn()
+
+    $('.barra_popup').stop().animate({
+        'width': '100%'
+    },3000)
 
     setTimeout(function(){
-        $('.container_popup_erro').fadeOut()
-        setTimeout(function(){
-            $('.container_popup_erro').remove()
-        },500)
-    },3500)
+        popup.stop().fadeOut()
+        $('.container_popup_erro').remove()
+    },3000)   
 }
 
 

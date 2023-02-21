@@ -94,8 +94,8 @@ function mostrarAplicacoes () {
             </div>
             <div class="container_movimentar_dinheiro" onclick="containerMovimentarDinheiro(id='${id3++}')">
                 <div class="box_aplicar">
-                    <input type="number" placeholder="Aplicar">
-                    <button type="submit" class="btn_input">Confirmar</button>
+                    <input type="number" placeholder="Aplicar" id="inputAdd-${id3}">
+                    <button type="submit" onclick="addAplicacao(id='${i}',id='${id3}')" class="btn_input">Confirmar</button>
                 </div>
                 <div class="box_resgatar">
                     <input type="number" placeholder="Resgatar" id="input-${id3}">
@@ -130,7 +130,7 @@ function renderAplicacoes () {
     localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
 }
 
-setInterval(function(){
+/*setInterval(function(){
     renderAplicacoes()
     valorTotalAplicacoes()
     olhoMostrarSaldo()
@@ -139,7 +139,7 @@ setInterval(function(){
         $(`.row_box span:nth-of-type(1)`).removeClass('cor_rendimento')
     },3000)
 },9000)
-
+*/
 
 
 // Opcao de retirar a aplicacao que escolher
@@ -148,14 +148,46 @@ setInterval(function(){
 function resgatarAplicacaoId(id,id3) {
     let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
     let input = document.getElementById(`input-${id3}`).value
-
     for(let i = 0;i < listaAplicacoes.length;i++){
-        if(listaAplicacoes[id3 - 1].valorAplicado >= input){
+        if(parseFloat(input) == 0){
+            popUpTransacaoErro()
+            break
+        }
+        else if(listaAplicacoes[id3 - 1].valorAplicado >= input && input != 0){
             listaAplicacoes[id3 - 1].valorAplicado = listaAplicacoes[id3 - 1].valorAplicado - parseFloat(input)
             saldoConta += parseFloat(input)
 
             atualizarSaldo(saldoConta)
             localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
+            popUpTransacao()
+            mostrarAplicacoes()
+            break
+        }else {
+            popUpTransacaoErro()
+            break
+        }
+    }
+}
+
+function addAplicacao(id,id3) {
+    let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
+    let input = document.getElementById(`inputAdd-${id3}`).value
+    for(let i = 0;i < listaAplicacoes.length;i++){
+        if(parseFloat(input) == 0){
+            popUpTransacaoErro()
+            break
+        }
+        else if(saldoConta >= input && input != 0){
+            listaAplicacoes[id3 - 1].valorAplicado = listaAplicacoes[id3 - 1].valorAplicado + parseFloat(input)
+            saldoConta -= parseFloat(input)
+
+            atualizarSaldo(saldoConta)
+            localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
+            popUpTransacao()
+            mostrarAplicacoes()
+            break
+        }else {
+            popUpTransacaoErro()
             break
         }
     }
