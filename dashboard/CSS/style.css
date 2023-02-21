@@ -17,8 +17,8 @@ html,body {
 }
 
 .dashboard {
-    min-width: 250px;
-    width: 250px;
+    width: 300px;
+    min-width: 300px;
     height: 100%;
     background-color: #16171e;
     transition: .3s;
@@ -40,7 +40,7 @@ html,body {
     height: 30px;
     transition: .3s;
     cursor: pointer;
-    fill: rgb(86, 86, 86);
+    fill: rgb(255, 255, 255);
 }
 
 .btn_dashboard svg:hover {
@@ -127,6 +127,20 @@ html,body {
     overflow-y: auto;
 }
 
+.container_principal_conteudo::-webkit-scrollbar {
+    width: 8px;
+    background-color: black;
+}
+.container_principal_conteudo::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background-color: rgb(59, 59, 59);
+    border: none;
+}
+
+.container_principal_conteudo::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(110, 110, 110);
+}
+
 
 @media screen and (max-width: 768px) {
     .dashboard {
@@ -151,4 +165,20 @@ html,body {
     .container_controle {
         display: none;
     }
+
+    .container_principal_conteudo::-webkit-scrollbar {
+        width: 4px;
+        background-color: black;
+    }
+    
+    .container_principal_conteudo::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        background-color: rgb(59, 59, 59);
+        border: none;
+    }
+    
+    .container_principal_conteudo::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(110, 110, 110);
+    }
+    
 }

@@ -55,14 +55,13 @@ function adicionarAplicacao(nomeAplicacao,valorAplicado,rentabilidade) {
 }
 
 
-
+let inputId = 0
 function mostrarAplicacoes () {
     $('.wraper_tabela').html('')
     let i = 0
     let id = 0
     let id2 = 0
     let id3 = 0
-
     listaAplicacoes.map((value)=> {
         $('.wraper_tabela').append(`
         <div class="fundo_investido_usuario">
@@ -99,8 +98,8 @@ function mostrarAplicacoes () {
                     <button type="submit" class="btn_input">Confirmar</button>
                 </div>
                 <div class="box_resgatar">
-                    <input type="number" placeholder="Resgatar">
-                    <button type="submit" class="btn_input" >Confirmar</button>
+                    <input type="number" placeholder="Resgatar" id="input-${id3}">
+                    <button type="submit" class="btn_input" id="btn-${id3}" onclick="resgatarAplicacaoId(id='${i}',id3='${id3}')">Confirmar</button>
                 </div>
             </div>
         </div><!--fundo_investido_usuario-->`)
@@ -109,7 +108,6 @@ function mostrarAplicacoes () {
 }
 
 mostrarAplicacoes()
-
 
 function valorTotalAplicacoes() {
     let totalInvestido = 0
@@ -146,6 +144,19 @@ setInterval(function(){
 
 // Opcao de retirar a aplicacao que escolher
 
-$('#opcaoRetirarAplicacao').click(function(){
-    
-})
+
+function resgatarAplicacaoId(id,id3) {
+    let saldoConta = parseFloat(localStorage.getItem('saldoConta'))
+    let input = document.getElementById(`input-${id3}`).value
+
+    for(let i = 0;i < listaAplicacoes.length;i++){
+        if(listaAplicacoes[id3 - 1].valorAplicado >= input){
+            listaAplicacoes[id3 - 1].valorAplicado = listaAplicacoes[id3 - 1].valorAplicado - parseFloat(input)
+            saldoConta += parseFloat(input)
+
+            atualizarSaldo(saldoConta)
+            localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
+            break
+        }
+    }
+}
