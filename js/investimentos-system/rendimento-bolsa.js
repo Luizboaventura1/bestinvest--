@@ -127,10 +127,11 @@ function renderAplicacoes () {
     for(let i = 0;i < listaAplicacoes.length;i++){
         listaAplicacoes[i].valorAplicado = listaAplicacoes[i].valorAplicado + ((listaAplicacoes[i].rentabilidade * listaAplicacoes[i].valorAplicado) / 100)
     }
+    
     localStorage.setItem('listaAplicacoes',JSON.stringify(listaAplicacoes))
 }
 
-/*setInterval(function(){
+setInterval(function(){
     renderAplicacoes()
     valorTotalAplicacoes()
     olhoMostrarSaldo()
@@ -138,8 +139,8 @@ function renderAplicacoes () {
     setTimeout(function(){
         $(`.row_box span:nth-of-type(1)`).removeClass('cor_rendimento')
     },3000)
-},9000)
-*/
+},4000)
+
 
 
 // Opcao de retirar a aplicacao que escolher
