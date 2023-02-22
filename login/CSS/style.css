@@ -11,7 +11,7 @@
 
 
 body {
-    background-image: linear-gradient(to top right, rgb(2 2 2), rgb(35, 36, 45));
+    background-image: linear-gradient(to top right, rgb(0 0 0), rgb(78 78 78));
 }
 
 html,body {
@@ -175,8 +175,8 @@ html,body {
     width: 100%;
     max-width: 350px;
     background-color: white;
-    border-radius: 10px;
     height: 500px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.165);
 }
 
 .container_login form input {
@@ -242,42 +242,42 @@ html,body {
     top: 0;
 }
 
+.banner_form {
+    width: 100%;
+    max-width: 350px;
+    height: 500px;
+    background-image: url('../img/banner-form.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding: 20px 0 0 20px;
+    box-shadow: 9px 2px 16px rgb(0 0 0 / 22%);
+}
+
+.banner_form img {
+    width: 100%;
+    max-width: 140px;
+}
+
 @media screen and (max-width: 600px) {
 
     .container_principal h1 {
         font-size: 36px;
     }
+
+    .banner_form {
+        display: none;
+    }
+
+    .container_login form {
+        width: 100%;
+        max-width: 350px;
+        background-color: white;
+        height: 500px;
+        box-shadow: 0 0 14px rgba(0, 0, 0, 0.268);
+    }
+
 }
 
 
-
-#yyOp {background-color: #242424;display: flex;flex-wrap: wrap;
-justify-content: center;
-align-items: center;
-width: 100%;
-max-width: 420px;
-height: 180px;
-border-radius: 5px;
-margin: 50px auto;
-text-align: left;
-padding-top: 30px;
-color: white;}#yyOp img {
-width: 30px;
-height: 30px;
-margin: 0 20px 0 0px;}#ittyp {
-border: none;
-outline: none;
-padding: 10px;
-background-color: rgb(0, 0, 0);
-color: white;
-border-radius: 5px;
-margin-right: 14px;}#ddwb {
-padding: 8px 19px;
-background-color: rgb(0, 0, 0);
-border: none;
-outline: none;
-color: white;
-font-size: 16px;
-font-weight: bold;
-border-radius: 5px;
-transition: .3s;}#ddwb:hover {background-color: rgb(22, 21, 27);}

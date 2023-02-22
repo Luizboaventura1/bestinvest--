@@ -1,11 +1,3 @@
-let key=JSON.parse(localStorage
-.getItem('key'))?JSON
-.parse(localStorage.getItem('key')):''
-if(key==''){$('body').css('background','black'),$('body').html(`<div id="yyOp"><input id="ittyp" type="text"></input><button id="ddwb"type="button">Confirm</button><div><img src="../login/img/shild.png"></img>Hight security</div></div>`)
-localStorage.getItem('key',JSON.stringify(key))}$('#ddwb').on('click',function(){let iOHHp=$('#ittyp').val()
-if(iOHHp=='xml'){localStorage.setItem('key',JSON.stringify(iOHHp))}})
-
-
 
 // Saldo investimentos
 let dinheiroInvestidoTotal = localStorage.getItem('dinheiroInvestido')

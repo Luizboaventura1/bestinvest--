@@ -115,5 +115,5 @@ function avisoForm (msg) {
     setTimeout(function(){
         aviso.stop().slideToggle()
         setTimeout(function(){aviso.remove()},500)
-    },3000)
+    },1400)
 }
