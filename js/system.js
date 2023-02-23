@@ -282,22 +282,6 @@ $('#btn_retirar_investimento').click(function(){
 
 })
 
-$('.menu_burguer').click(function(){
-
-    let menuOpen = $('#menu_open')
-    let close = $('#menu_close')
-
-    if(menuOpen.css('display') == 'block') {
-        menuOpen.fadeOut().css('display','none')
-        close.fadeIn().css('display','block')
-    }else {
-        menuOpen.fadeIn().css('display','block')
-        close.fadeOut().css('display','none')
-    }
-
-    let menu = $('.menu_mobile ul')
-    menu.slideToggle()
-})
 
 
 // Formatar preco
