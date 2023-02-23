@@ -94,7 +94,7 @@ $("#button_investir").click(function(){
     if(tokenConta == ''){
         avisoForm('Crie uma conta!')
     }else {
-        location.href = '../bestinvest.html'
+        location.href = '../dashboard/bestinvest.html'
     }
 })
 
